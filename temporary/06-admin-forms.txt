@@ -61,3 +61,19 @@ NEW: // "Head, Department of EEE"
 #  Run:  grep -ri "mechanical" src/app/admin/
 #  Run:  grep -ri "BSc-ME" src/app/admin/
 #  Fix any matches found.
+
+
+# ──────────────────────────────────────────────────────────────────
+#  VERIFICATION NOTE (added 2026-08-02)
+#  The scan surfaced ME-specific placeholders in the Lab admin form.
+#  These fall under the DEFERRED "lab names" item (00-README §2,
+#  04 §8) — real EEE lab names to be provided later. Do NOT invent
+#  values now; listed here only so they are not forgotten:
+#
+#    src/app/admin/(authed)/lab-facility/labs/LabForm.tsx
+#      placeholder="fluid-mechanics-lab"
+#      placeholder="Fluid Mechanics Lab"
+#    src/app/(public)/about/lab-facility/LabFacilityClient.tsx
+#      comment: /about/lab-facility#fluid-mechanics-lab
+#  ^^ These are placeholder/anchor examples, not user-facing labels;
+#     update together with the real lab-name pass.
