@@ -77,7 +77,7 @@
 #    - For renames: move/rename directories and files as listed
 #    - After all changes: run `npx prisma generate`
 #
-#  ── POST-CONVERSION STEPS ──
+#  ── POST-CONVERSION STEPS (Dont do these now unless told again) ──
 #  1. Update course codes when values are provided
 #  2. Update lab names when values are provided
 #  3. Replace faculty data with actual EEE faculty
