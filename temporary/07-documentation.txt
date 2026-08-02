@@ -1,0 +1,106 @@
+# ═══════════════════════════════════════════════════════════════════════
+#  07-documentation.txt
+#  README, assets, and other docs that mention Mechanical Engineering
+#  Lower priority — not runtime code, just documentation
+# ═══════════════════════════════════════════════════════════════════════
+
+
+# ──────────────────────────────────────────────────────────────────
+#  1. README.md
+# ──────────────────────────────────────────────────────────────────
+
+OLD: # Sonargaon University — ME Department
+NEW: # Sonargaon University — EEE Department
+
+OLD: Mechanical Engineering department
+NEW: Electrical and Electronics Engineering department
+
+#  Read the full README and replace any other mentions of "Mechanical"
+
+
+# ──────────────────────────────────────────────────────────────────
+#  2. Asset file references
+#     (Image filenames with "mecha" — these will need NEW IMAGES)
+# ──────────────────────────────────────────────────────────────────
+
+#  These files are referenced in seed data and Mecha Club components.
+#  NOTE: You need actual EEE-related images to replace them.
+#  The filenames will change once you have new assets.
+
+OLD: /assets/mecha-hero.webp       →  /assets/eee-hero.webp       (TBD)
+OLD: /assets/mecha-club-1.webp     →  /assets/eee-club-1.webp     (TBD)
+OLD: /assets/mecha-field-visit.webp →  /assets/eee-field-visit.webp (TBD)
+OLD: /assets/mecha-workshop.webp   →  /assets/eee-workshop.webp   (TBD)
+OLD: /assets/mecha-seminar.webp    →  /assets/eee-seminar.webp    (TBD)
+OLD: /assets/mecha-project.webp    →  /assets/eee-project.webp    (TBD)
+OLD: /assets/mecha-cocurricular.webp → /assets/eee-cocurricular.webp (TBD)
+OLD: /assets/mecha-appreciation.webp → /assets/eee-appreciation.webp (TBD)
+
+#  NOTE: Actual EEE images must be sourced and placed in /public/assets/
+#  before updating these references. Otherwise the page will show broken images.
+
+
+# ──────────────────────────────────────────────────────────────────
+#  3. Facebook URL reference (in seed data)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: https://www.facebook.com/su.mechanical.engineering
+NEW: # This needs to be the actual EEE department Facebook page URL
+     # Ask the department for their social media links.
+     # If none exists yet, use the university's generic Facebook page.
+#  NOTE: found in scripts/seed.ts (ignored per user request)
+#        and potentially in clubs-data.ts
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4. .github/ PR files (historical — OPTIONAL)
+# ──────────────────────────────────────────────────────────────────
+
+#  20 files: .github/PR_PHASE_0.md through .github/PR_PHASE_20.md
+#  These document the original build of the ME department site.
+#  OPTIONAL: either delete them or leave as historical reference.
+#  Recommendation: leave as-is unless you want a clean history.
+
+
+# ──────────────────────────────────────────────────────────────────
+#  5. docs/ files (OPTIONAL)
+# ──────────────────────────────────────────────────────────────────
+
+#  docs/phase-0-api.md, docs/phase-2-todo.md
+#  docs/superpowers/specs/*.md, docs/superpowers/plans/*.md
+#  These are historical development docs.
+#  OPTIONAL: update or delete. Recommendation: leave or delete.
+
+
+# ════════════════════════════════════════════════════════════════
+#  PENDING ITEMS (will be done later)
+# ════════════════════════════════════════════════════════════════
+
+#  a) COURSE CODES:   ME 2101 → EEE 21xx, etc.
+#     Values to be provided later. Found in:
+#       - src/lib/faculty-data.ts (~8 course codes)
+#       - Any admin forms referencing ME courses
+#       - Search index comments
+
+#  b) LAB NAMES:      Fluid Mechanics, Thermodynamics, etc. → EEE labs
+#     Values to be provided later. Found in:
+#       - src/lib/labs-data.ts
+#       - src/lib/notices-data.ts
+#       - src/lib/identity.ts (if any lab references)
+
+#  c) FACULTY DATA:   The faculty list in src/lib/faculty-data.ts
+#     currently has ME faculty. This needs to be replaced with
+#     actual EEE department faculty members (names, designations,
+#     education, publications, course codes, emails, photos).
+#     This is a DATA REPLACEMENT, not just text changes.
+
+#  d) CLUB NAME:      "SU Electrical and Electronic Club (SUEEC)"
+#     needs verification. Adjust after confirming with department.
+
+#  e) SEED DATA:      scripts/seed.ts is excluded per user request.
+#     It will need full EEE data later (or run seed with new data
+#     after all other files are changed).
+
+#  f) DATABASE:       After changing seed data and static files,
+#     run `npm run db:seed` to populate the database with EEE data.
+#     Or manually edit DB rows via Prisma Studio for individual changes.

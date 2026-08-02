@@ -1,0 +1,319 @@
+# ═══════════════════════════════════════════════════════════════════════
+#  05-mecha-club-to-sueec.txt
+#  Rename all "Mecha Club" routes, API endpoints, admin pages, and
+#  Prisma models → "SU Electrical and Electronic Club (SUEEC)"
+#
+#  ⚠ NAME PENDING VERIFICATION: "SU Electrical and Electronic Club (SUEEC)"
+#    This is the current working name. Verify before deploying.
+# ═══════════════════════════════════════════════════════════════════════
+
+
+# ════════════════════════════════════════════════════════════════
+#  STEP 1: Directory Renames (file system)
+# ════════════════════════════════════════════════════════════════
+
+# PUBLIC ROUTE:
+RENAME: src/app/(public)/about/mecha-club/
+   TO:  src/app/(public)/about/eee-club/
+
+# PUBLIC API:
+RENAME: src/app/api/mecha-club/
+   TO:  src/app/api/eee-club/
+
+# ADMIN PAGE:
+RENAME: src/app/admin/(authed)/about-mecha-club/
+   TO:  src/app/admin/(authed)/about-eee-club/
+
+# ADMIN APPLICATIONS PAGE:
+RENAME: src/app/admin/(authed)/mecha-club-applications/
+   TO:  src/app/admin/(authed)/eee-club-applications/
+
+
+# ════════════════════════════════════════════════════════════════
+#  STEP 2: Rename files inside the renamed directories
+# ════════════════════════════════════════════════════════════════
+
+RENAME: src/app/(public)/about/eee-club/JoinMechaClubButton.tsx
+   TO:  src/app/(public)/about/eee-club/JoinEeeClubButton.tsx
+
+RENAME: src/app/admin/(authed)/about-eee-club/AboutMechaClubForm.tsx
+   TO:  src/app/admin/(authed)/about-eee-club/AboutEeeClubForm.tsx
+
+RENAME: src/app/admin/(authed)/eee-club-applications/ApplicationsList.tsx
+   TO:  # KEEP filename, just update imports inside
+
+
+# ════════════════════════════════════════════════════════════════
+#  STEP 3: Lib admin-actions rename
+# ════════════════════════════════════════════════════════════════
+
+RENAME: src/lib/admin-actions/about-mecha-club.ts
+   TO:  src/lib/admin-actions/about-eee-club.ts
+
+RENAME: src/lib/admin-actions/mecha-club-applications.ts
+   TO:  src/lib/admin-actions/eee-club-applications.ts
+
+
+# ════════════════════════════════════════════════════════════════
+#  STEP 4: File content changes (after renames)
+# ════════════════════════════════════════════════════════════════
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4a. src/app/(public)/about/eee-club/page.tsx
+# ──────────────────────────────────────────────────────────────────
+#  (formerly about/mecha-club/page.tsx)
+
+OLD: import JoinMechaClubButton from './JoinMechaClubButton';
+NEW: import JoinEeeClubButton from './JoinEeeClubButton';
+
+OLD: <JoinMechaClubButton />
+NEW: <JoinEeeClubButton />
+
+OLD: title: 'Mecha Club — Department of Electrical and Electronics Engineering'
+NEW: title: 'SU Electrical and Electronic Club — Department of EEE'
+
+OLD: 'SU Electrical and Electronic Club (Mecha Club)'
+NEW: 'SU Electrical and Electronic Club (SUEEC)'
+#  ^^ the previous replacement may have left "(Mecha Club)" — fix it
+
+OLD: alt="Mecha Club members"
+NEW: alt="SUEEC club members"
+
+#  Also check for any "/admin/about-mecha-club" comment and update to "/admin/about-eee-club"
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4b. src/app/(public)/about/eee-club/JoinEeeClubButton.tsx
+#       (formerly JoinMechaClubButton.tsx)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: fetch('/api/mecha-club/apply'
+NEW: fetch('/api/eee-club/apply'
+
+OLD: aria-labelledby="mecha-club-join-title"
+NEW: aria-labelledby="eee-club-join-title"
+
+OLD: id="mecha-club-join-title"
+NEW: id="eee-club-join-title"
+
+OLD: Join the Mecha Club
+NEW: Join the SU Electrical and Electronic Club
+#  NOTE: "SUEEC" name pending verification
+
+OLD: htmlFor="mecha-club-website"
+NEW: htmlFor="eee-club-website"
+
+OLD: id="mecha-club-website"
+NEW: id="eee-club-website"
+
+#  ── Also do a global find-and-replace across this file ──
+OLD: Mecha Club
+NEW: SU Electrical and Electronic Club
+
+OLD: mecha club
+NEW: EEE club
+
+OLD: mecha-club
+NEW: eee-club
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4c. src/app/api/eee-club/apply/route.ts
+#       (formerly api/mecha-club/apply/route.ts)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: rateLimitKey = 'mecha-club-apply:${ip}'
+NEW: rateLimitKey = 'eee-club-apply:${ip}'
+
+OLD: revalidatePath('/admin/mecha-club-applications')
+NEW: revalidatePath('/admin/eee-club-applications')
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4d. src/app/admin/(authed)/about-eee-club/page.tsx
+#       (formerly about-mecha-club/page.tsx)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: metadata = { title: 'About — Mecha Club' }
+NEW: metadata = { title: 'About — SU Electrical and Electronic Club' }
+
+OLD: <h1>About — Mecha Club</h1>
+NEW: <h1>About — SU Electrical and Electronic Club</h1>
+
+OLD: <code>/about/mecha-club</code>
+NEW: <code>/about/eee-club</code>
+
+OLD: import AboutMechaClubForm from './AboutMechaClubForm'
+NEW: import AboutEeeClubForm from './AboutEeeClubForm'
+
+OLD: <AboutMechaClubForm
+NEW: <AboutEeeClubForm
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4e. src/app/admin/(authed)/about-eee-club/AboutEeeClubForm.tsx
+#       (formerly AboutMechaClubForm.tsx)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: import ... from '@/lib/admin-actions/about-mecha-club'
+NEW: import ... from '@/lib/admin-actions/about-eee-club'
+
+OLD: toast.success('About Mecha Club saved')
+NEW: toast.success('About SU Electrical and Electronic Club saved')
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4f. src/app/admin/(authed)/eee-club-applications/page.tsx
+#       (formerly mecha-club-applications/page.tsx)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: metadata = { title: 'Mecha Club — Applications' }
+NEW: metadata = { title: 'SUEEC — Applications' }
+
+OLD: <h1>Mecha Club — Applications</h1>
+NEW: <h1>SU Electrical and Electronic Club — Applications</h1>
+
+OLD: import ApplicationsList from './ApplicationsList'
+NEW: # KEEP, just update internal imports
+
+#  Do a global find-and-replace in this file:
+OLD: Mecha Club
+NEW: SU Electrical and Electronic Club
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4g. src/app/admin/(authed)/eee-club-applications/ApplicationsList.tsx
+#       (import path update)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: import ... from '@/lib/admin-actions/mecha-club-applications'
+NEW: import ... from '@/lib/admin-actions/eee-club-applications'
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4h. src/lib/admin-actions/about-eee-club.ts
+#       (formerly about-mecha-club.ts)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: revalidatePath('/admin/about-mecha-club')
+NEW: revalidatePath('/admin/about-eee-club')
+
+OLD: revalidatePath('/about/mecha-club')
+NEW: revalidatePath('/about/eee-club')
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4i. src/lib/admin-actions/eee-club-applications.ts
+#       (formerly mecha-club-applications.ts)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: revalidatePath('/admin/mecha-club-applications')
+NEW: revalidatePath('/admin/eee-club-applications')
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4j. src/components/admin/Sidebar.tsx
+#       (sidebar navigation entries)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: { href: '/admin/about-mecha-club', label: 'Mecha Club', icon: Info }
+NEW: { href: '/admin/about-eee-club', label: 'SUEEC', icon: Info }
+
+#  Also update all other sidebar entries in the Mecha Club section:
+OLD: Mecha Club Applications
+NEW: SUEEC Applications
+
+#  Search for "mecha" or "Mecha" in Sidebar.tsx and replace all:
+OLD: mecha-club
+NEW: eee-club
+
+OLD: Mecha Club
+NEW: SUEEC
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4k. src/app/admin/(authed)/page.tsx  (admin dashboard links)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: href="/admin/about-mecha-club"
+NEW: href="/admin/about-eee-club"
+
+OLD: title="About — Mecha Club"
+NEW: title="About — SUEEC"
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4l. src/lib/validation.ts
+#       (comment only — line ~1056)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: Mecha Club join application — public submit + admin status edit
+NEW: SUEEC join application — public submit + admin status edit
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4m. src/lib/search-index.ts
+#       (static pages entry for the club)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: { title: 'Mecha Club', type: 'Page', href: '/about/mecha-club', description: 'Sonargaon University Mecha Club (SUMEC)' },
+NEW: { title: 'SU Electrical and Electronic Club', type: 'Page', href: '/about/eee-club', description: 'SU Electrical and Electronic Club (SUEEC)' },
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4n. src/app/sitemap.ts
+#       (sitemap entry for the club page)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: { path: '/about/mecha-club', priority: 0.7, changeFrequency: 'monthly' }
+NEW: { path: '/about/eee-club', priority: 0.7, changeFrequency: 'monthly' }
+
+
+# ════════════════════════════════════════════════════════════════
+#  STEP 5: Prisma schema changes
+# ════════════════════════════════════════════════════════════════
+#  File: prisma/schema.prisma
+
+OLD: model AboutMechaClub {
+NEW: model AboutEeeClub {
+
+OLD: @@map("about_mecha_club")
+NEW: @@map("about_eee_club")
+
+OLD: model MechaClubApplication {
+NEW: model EeeClubApplication {
+
+OLD: @@map("mecha_club_application")
+NEW: @@map("eee_club_application")
+
+#  Also update any comments referencing "MechaClub" or "mecha_club"
+#  Search for "mecha" case-insensitively in the entire schema file
+
+# ════════════════════════════════════════════════════════════════
+#  STEP 6: Prisma migration files (4 files)
+#  These are historical DDL — only change if you're re-seeding
+#  a fresh database. Otherwise, the existing migrations are
+#  already applied and renaming them does nothing for the DB.
+# ════════════════════════════════════════════════════════════════
+
+#  Files in prisma/migrations/ containing "mecha_club" in SQL:
+#    - 20260524120000_move_mecha_club_to_student_society/migration.sql
+#    - 20260524130000_mecha_club_application/migration.sql
+#
+#  OPTIONAL: Replace "mecha_club" → "eee_club" in SQL table names
+#  and data. Only needed if you create a fresh database from
+#  migrations (prisma migrate dev on a clean DB).
+
+
+# ════════════════════════════════════════════════════════════════
+#  STEP 7: Final check — global search for leftover references
+# ════════════════════════════════════════════════════════════════
+
+#  After all changes, run these searches across the entire project:
+#    grep -ri "mecha" .
+#    grep -ri "mech" .
+#    grep -ri "sumec" .
+#    grep -ri "mechanical" .
+#
+#  Fix any remaining references you find.

@@ -1,0 +1,272 @@
+# ═══════════════════════════════════════════════════════════════════════
+#  04-static-data-files.txt
+#  Static data modules in src/lib/*-data.ts (DB seed creates rows from these)
+# ═══════════════════════════════════════════════════════════════════════
+
+
+# ──────────────────────────────────────────────────────────────────
+#  1. src/lib/data.ts
+#     (program subtitle + description — used as fallback)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: subtitle: 'B.Sc in Mechanical Engineering'
+NEW: subtitle: 'B.Sc. in Electrical and Electronics Engineering'
+
+OLD: '...core mechanical engineering...'
+NEW: '...core electrical and electronics engineering...'
+#  NOTE: find exact text and replace "mechanical" → "electrical and electronics"
+
+
+# ──────────────────────────────────────────────────────────────────
+#  2. src/lib/faculty-data.ts  (HEAVY — ~50 references)
+#     Global replacements to apply:
+# ──────────────────────────────────────────────────────────────────
+
+# REPLACE ALL:
+OLD: const DEPARTMENT = 'Department of Mechanical Engineering'
+NEW: const DEPARTMENT = 'Department of EEE'
+
+OLD: 'Head, Department of Mechanical Engineering'
+NEW: 'Head, Department of EEE'
+
+OLD: { label: 'Department', value: 'Mechanical Engineering' }
+NEW: { label: 'Department', value: 'Electrical and Electronics Engineering' }
+#  ^^ ~24 occurrences — one per faculty member
+
+OLD: Group: Mechanical Engineering
+NEW: Group: Electrical and Electronics Engineering
+#  ^^ multiple occurrences in education sections
+
+OLD: Group: Mechanical Technology
+NEW: Group: Electrical Technology
+
+OLD: B.Sc. in Mechanical Engineering
+NEW: B.Sc. in Electrical and Electronics Engineering
+
+OLD: Mechanical Engineering at DUET
+NEW: Electrical and Electronics Engineering at DUET
+
+OLD: A Study of Mechanical Properties...
+NEW: [KEEP or replace if not applicable — Mechanical Properties is a materials science topic, not ME-specific]
+
+#  ── Course Codes (ME → EEE) ──
+#  NOTE: Actual EEE course codes to be provided later.
+#  For now, mark these with a TODO comment.
+OLD: ME 2101
+NEW: [TODO: replace with actual EEE course code]
+
+OLD: ME 2201
+NEW: [TODO: ...]
+
+OLD: ME 2203
+NEW: [TODO: ...]
+
+OLD: ME 2207
+NEW: [TODO: ...]
+
+OLD: ME 3101
+NEW: [TODO: ...]
+
+OLD: ME 3141
+NEW: [TODO: ...]
+
+OLD: ME 4201
+NEW: [TODO: ...]
+
+OLD: ME 4205
+NEW: [TODO: ...]
+
+#  ── Emails with "mechanical" or ".me" in them ──
+#  These may be personal emails (not department-specific):
+#    niloy24sumechanical@gmail.com  →  might be niloy24sueee@gmail.com (verify)
+#    washif.me@gmail.com            →  KEEP (personal email, not .me department)
+#    hasantareq.me.su.22@gmail.com  →  KEEP (personal email, not .me department)
+#    mali@me.buet.ac.bd             →  KEEP (BUET domain, not our department)
+
+OLD: export const departmentName = DEPARTMENT
+NEW: # KEEP AS-IS (it re-exports the constant; once DEPARTMENT is changed, this follows)
+
+
+# ──────────────────────────────────────────────────────────────────
+#  3. src/lib/news-data.ts  (~30 lines)
+#     Global replacements:
+# ──────────────────────────────────────────────────────────────────
+
+OLD: 'SU Mechanical Students...'
+NEW: 'SU EEE Students...'
+
+OLD: '...ME Department visited BMTF...'
+NEW: '...EEE Department visited BMTF...'
+
+OLD: 'Department of Mechanical Engineering at Sonargaon University'
+NEW: 'Department of EEE at Sonargaon University'
+
+OLD: 'SUMEC Members Attend...'
+NEW: 'SUEEC Members Attend...'
+
+OLD: 'SUMEC at IFSSE-2024'
+NEW: 'SUEEC at IFSSE-2024'
+
+OLD: 'Sonargaon University Mecha Club (SUMEC)'
+NEW: 'SU Electrical and Electronic Club (SUEEC)'
+#  NOTE: "SUEEC" name pending verification
+
+OLD: 'SUMEC members...'
+NEW: 'SUEEC members...'
+
+OLD: { label: 'Organising Partner', value: 'Sonargaon University Mecha Club (SUMEC)' }
+NEW: { label: 'Organising Partner', value: 'SU Electrical and Electronic Club (SUEEC)' }
+
+OLD: 'Head of the Department of Mechanical Engineering'
+NEW: 'Head of the Department of EEE'
+
+OLD: 'Mecha Club (SUMEC)'
+NEW: 'SUEEC'
+
+OLD: 'SUMEC Celebrates...'
+NEW: 'SUEEC Celebrates...'
+
+OLD: 'SUMEC 1st Anniversary...'
+NEW: 'SUEEC 1st Anniversary...'
+
+OLD: { label: 'Location', value: 'Mechanical Engineering Dept. Labs, SU' }
+NEW: { label: 'Location', value: 'EEE Dept. Labs, SU' }
+
+OLD: 'Mechanical Engineering students...'
+NEW: 'EEE students...'
+
+#  Do a global search for:
+#    "Mechanical Engineering" → "EEE"
+#    "Mechanical"            → "EEE"
+#    "SUMEC"                → "SUEEC"
+#    "Mecha Club"           → "SU Electrical and Electronic Club"
+#  across the entire file
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4. src/lib/events-data.ts  (~15 lines)
+#     Global replacements:
+# ──────────────────────────────────────────────────────────────────
+
+OLD: 'Mechanical Engineering Department: Inter-Department Cricket...'
+NEW: 'EEE Department: Inter-Department Cricket...'
+
+OLD: 'The Department of Mechanical Engineering welcomes...'
+NEW: 'The Department of EEE welcomes...'
+
+OLD: '"Mechanical family"'
+NEW: '"EEE family"'
+
+OLD: '...ME Department visited BMTF...'
+NEW: '...EEE Department visited BMTF...'
+
+OLD: 'Honouring Mechanical Engineering Faculty...'
+NEW: 'Honouring EEE Faculty...'
+
+OLD: 'Mechanical Engineering & BIIN...'
+NEW: 'EEE & BIIN...'
+
+OLD: 'Department of Mechanical Engineering and BIIN...'
+NEW: 'Department of EEE and BIIN...'
+
+OLD: "World Mechanical Engineer's Day"
+NEW: "World Engineer's Day"
+#  NOTE: "Mechanical Engineer's Day" is ME-specific; verify what EEE equivalent is
+
+OLD: "Department celebrated World Mechanical Engineer's Day..."
+NEW: "Department celebrated World Engineer's Day..."
+
+OLD: 'future of Mechanical Engineering'
+NEW: 'future of Electrical and Electronics Engineering'
+
+OLD: 'Head, Department of Mechanical Engineering, SU'
+NEW: 'Head, Department of EEE, SU'
+
+OLD: 'Advisor, Department of Mechanical Engineering'
+NEW: 'Advisor, Department of EEE'
+
+#  Global search for "Mechanical" → "EEE" across the entire file
+
+
+# ──────────────────────────────────────────────────────────────────
+#  5. src/lib/alumni-data.ts  (6 entries)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: department: 'Mechanical Engineering'
+NEW: department: 'Electrical and Electronics Engineering'
+#  ^^ 6 occurrences — one per alumni entry
+
+OLD: designation: 'Assistant Engineer (Mechanical)'
+NEW: designation: 'Assistant Engineer (Electrical)'
+#  NOTE: verify if this person is actually an Electrical engineer
+
+
+# ──────────────────────────────────────────────────────────────────
+#  6. src/lib/clubs-data.ts
+# ──────────────────────────────────────────────────────────────────
+
+OLD: name: 'Sonargaon University Mecha Club'
+NEW: name: 'SU Electrical and Electronic Club'
+#  NOTE: "SUEEC" name pending verification
+
+OLD: abbreviation: 'SUMEC'
+NEW: abbreviation: 'SUEEC'
+
+OLD: 'Representing the Mechanical Engineering department...'
+NEW: 'Representing the EEE department...'
+
+
+# ──────────────────────────────────────────────────────────────────
+#  7. src/lib/research-data.ts  (~12 lines)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: 'Department of Mechanical Engineering, Sonargaon University'
+NEW: 'Department of EEE, Sonargaon University'
+#  ^^ ~12 occurrences — one per research paper. Search and replace all.
+
+
+# ──────────────────────────────────────────────────────────────────
+#  8. src/lib/labs-data.ts  (few borderline references)
+# ──────────────────────────────────────────────────────────────────
+#  NOTE: Lab names and descriptions are ME-specific.
+#  Lab names WILL BE PROVIDED LATER. For now:
+#    - Flag all lab entries with a TODO comment
+#    - "mechanical properties" — generic materials science term, may keep
+#    - "mechanical, automobile, and aerospace engineering students" → "electrical students"
+
+OLD: 'mechanical, automobile, and aerospace engineering students'
+NEW: 'electrical and electronics engineering students'
+
+#  ── LAB NAMES TO REPLACE (when values are provided) ──
+#  TODO: Replace the following lab entries with EEE lab equivalents:
+#    - Fluid Mechanics Lab
+#    - Thermodynamics Lab (note: this is listed in `src/lib/notices-data.ts` line ~87)
+#    - Heat Transfer Lab
+#    - ... (other ME-specific labs)
+#  NOTE: ALL lab names, descriptions, and equipment will be provided later.
+
+
+# ──────────────────────────────────────────────────────────────────
+#  9. src/lib/notices-data.ts  (2 lines)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: 'Departments including ME, CE, CSE, EEE, TE...'
+NEW: 'Departments including EEE, CE, CSE, ME, TE...'
+#  NOTE: "ME" just moves position (EEE still exists in list, now ME too)
+
+OLD: 'CSE, EEE, ME, CE, TE, BBA...'
+NEW: 'EEE, CSE, ME, CE, TE, BBA...'
+#  ^^ Same — just reorder so EEE comes first
+
+
+# ──────────────────────────────────────────────────────────────────
+# 10. src/lib/search-index.ts
+#     (static pages list entry for Mecha Club)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: { title: 'Mecha Club', type: 'Page', href: '/about/mecha-club', description: 'Sonargaon University Mecha Club (SUMEC)' },
+NEW: { title: 'SU Electrical and Electronic Club', type: 'Page', href: '/about/eee-club', description: 'SU Electrical and Electronic Club (SUEEC)' },
+#  NOTE: "SUEEC" name + "/about/eee-club" route pending verification
+
+OLD: // e.g., "B.Sc. in Mechanical Engineering (ME)"
+NEW: // e.g., "B.Sc. in Electrical and Electronics Engineering (EEE)"

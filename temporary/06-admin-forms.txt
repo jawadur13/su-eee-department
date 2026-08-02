@@ -1,0 +1,63 @@
+# ═══════════════════════════════════════════════════════════════════════
+#  06-admin-forms.txt
+#  Admin form default values that hardcode "Mechanical Engineering"
+# ═══════════════════════════════════════════════════════════════════════
+
+
+# ──────────────────────────────────────────────────────────────────
+#  1. src/app/admin/(authed)/alumni/AlumniForm.tsx
+# ──────────────────────────────────────────────────────────────────
+
+OLD: defaultValue={initial?.department ?? 'Mechanical Engineering'}
+NEW: defaultValue={initial?.department ?? 'Electrical and Electronics Engineering'}
+
+
+# ──────────────────────────────────────────────────────────────────
+#  2. src/app/admin/(authed)/prospectus-entries/ProspectusForm.tsx
+#     (2 changes)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: placeholder="bsc-mechanical-engineering"
+NEW: placeholder="bsc-eee"
+
+OLD: defaultValue={initial?.department ?? 'Mechanical Engineering'}
+NEW: defaultValue={initial?.department ?? 'Electrical and Electronics Engineering'}
+
+
+# ──────────────────────────────────────────────────────────────────
+#  3. src/app/admin/(authed)/syllabus/SyllabusForm.tsx
+#     (2 changes)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: placeholder="bsc-mechanical-engineering"
+NEW: placeholder="bsc-eee"
+
+OLD: defaultValue={initial?.department ?? 'Mechanical Engineering'}
+NEW: defaultValue={initial?.department ?? 'Electrical and Electronics Engineering'}
+
+
+# ──────────────────────────────────────────────────────────────────
+#  4. src/app/admin/(authed)/program-fee-structures/[programId]/ProgramFeeStructureForm.tsx
+# ──────────────────────────────────────────────────────────────────
+
+OLD: placeholder="B.Sc. in Mechanical Engineering (ME)"
+NEW: placeholder="B.Sc. in Electrical and Electronics Engineering (EEE)"
+
+
+# ──────────────────────────────────────────────────────────────────
+#  5. src/app/admin/(authed)/faculty/DesignationSelector.tsx
+#     (comment only)
+# ──────────────────────────────────────────────────────────────────
+
+OLD: // "Head, Department of Mechanical Engineering"
+NEW: // "Head, Department of EEE"
+
+
+# ──────────────────────────────────────────────────────────────────
+#  6. Bonus: Check other admin form files for "Mechanical"
+#     (these may not have been caught by the initial search)
+# ──────────────────────────────────────────────────────────────────
+
+#  Run:  grep -ri "mechanical" src/app/admin/
+#  Run:  grep -ri "BSc-ME" src/app/admin/
+#  Fix any matches found.
