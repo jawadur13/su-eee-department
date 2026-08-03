@@ -36,7 +36,7 @@ export const notices: Notice[] = [
     date: '26 Apr, 2026',
     isoDate: '2026-04-26',
     description:
-      'Departments including ME, CE, CSE, EEE, TE, and Business Administration will observe a semester break on April 29 and 30, 2026. Architecture, Law, NAME, Bangla, JMS, FDT, and AMT departments will remain active. Classes for Summer-2026 will officially commence on May 02, 2026, following the May Day holiday.',
+      'Departments including EEE, CE, CSE, ME, TE, and Business Administration will observe a semester break on April 29 and 30, 2026. Architecture, Law, NAME, Bangla, JMS, FDT, and AMT departments will remain active. Classes for Summer-2026 will officially commence on May 02, 2026, following the May Day holiday.',
     file: '/assets/notices/spring-2026-semester-break.webp',
     fileType: 'image',
   },
@@ -84,7 +84,7 @@ export const notices: Notice[] = [
     date: '03 Apr, 2026',
     isoDate: '2026-04-03',
     description:
-      'All students in the CSE, EEE, ME, CE, TE, BBA, MBA, RMBA, EMBA, MSCM, and MBM programs are instructed to complete their online pre-registration for the Summer-2026 semester through the ERP software. Completion is mandatory for attending classes and exams; students must clear previous dues before registering. Deadline: April 30, 2026 (without late fee); late fees apply from May 02 to June 06, 2026.',
+      'All students in the EEE, CSE, ME, CE, TE, BBA, MBA, RMBA, EMBA, MSCM, and MBM programs are instructed to complete their online pre-registration for the Summer-2026 semester through the ERP software. Completion is mandatory for attending classes and exams; students must clear previous dues before registering. Deadline: April 30, 2026 (without late fee); late fees apply from May 02 to June 06, 2026.',
     file: '/assets/notices/pre-registration-summer-2026.pdf',
     fileType: 'pdf',
   },

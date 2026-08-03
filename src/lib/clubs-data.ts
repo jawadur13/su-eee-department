@@ -105,10 +105,10 @@ export const clubs: Club[] = [
   },
   {
     id: 'sumec',
-    name: 'Sonargaon University Mecha Club',
-    abbreviation: 'SUMEC',
+    name: 'Sonargaon University Electrical and Electronic Club',
+    abbreviation: 'SUEEC',
     description:
-      'Representing the Mechanical Engineering department, this club is highly active in technical fests. They recently gained recognition as a "Valuable Club Partner" at high-profile events like Auto Fest.',
+      'Representing the Electrical and Electronics Engineering department, this club is highly active in technical fests. They recently gained recognition as a "Valuable Club Partner" at high-profile events like Auto Fest.',
     image: '/assets/news/sumec-1st-anniversary.webp',
   },
 ];

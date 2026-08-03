@@ -37,7 +37,7 @@ export interface Faculty {
   previousEmployment?: SectionContent;
 }
 
-const DEPARTMENT = 'Department of Mechanical Engineering';
+const DEPARTMENT = 'Department of EEE';
 
 export const faculty: Faculty[] = [
   // ───── Leadership ─────
@@ -52,7 +52,7 @@ export const faculty: Faculty[] = [
   {
     slug: 'mostofa-hossain',
     name: 'Prof. Md. Mostofa Hossain',
-    designation: 'Head, Department of Mechanical Engineering',
+    designation: 'Head, Department of EEE',
     secondaryTitle: 'Professor',
     badge: 'Head of Department',
     type: 'leadership',
@@ -64,16 +64,16 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Prof. Md. Mostofa Hossain' },
       { label: 'Designation', value: 'Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01955529729' },
     ],
 
     academicQualification: [
       'SSC Certification — Passing Year: 1972 | Group: Science | School: Mohadevpur High School',
-      'HSC Certification — Passing Year: 1981 | Group: Mechanical Technology | College: Rajshahi Polytechnic Institute',
-      'Honours Certification — Passing Year: 1989 | Group: Mechanical Engineering | University: DUET (Former BIT, Dhaka)',
-      'Masters Certification — Passing Year: 2003 | Group: Mechanical Engineering | University: BUET, Dhaka',
+      'HSC Certification — Passing Year: 1981 | Group: Electrical Technology | College: Rajshahi Polytechnic Institute',
+      'Honours Certification — Passing Year: 1989 | Group: Electrical and Electronics Engineering | University: DUET (Former BIT, Dhaka)',
+      'Masters Certification — Passing Year: 2003 | Group: Electrical and Electronics Engineering | University: BUET, Dhaka',
     ],
 
     trainingExperience: [
@@ -145,7 +145,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'A M M Shamsul Alam' },
       { label: 'Designation', value: 'Associate Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01769005367' },
     ],
@@ -167,7 +167,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Minhaz Uddin' },
       { label: 'Designation', value: 'Assistant Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01955529759' },
     ],
@@ -179,7 +179,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Niloy Sarkar' },
       { label: 'Designation', value: 'Assistant Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01955529829' },
     ],
@@ -191,14 +191,14 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Nuruzzaman Rakib' },
       { label: 'Designation', value: 'Assistant Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01955529752' },
     ],
     academicQualification: [
       'SSC Certification — Passing Year: 2011 | Group: No information provided | School: No information provided',
       'HSC Certification — Passing Year: 2013 | Group: No information provided | College: No information provided',
-      'Honours Certification — Passing Year: 2017 | Group: Mechanical Engineering | University: Islamic University of Technology',
+      'Honours Certification — Passing Year: 2017 | Group: Electrical and Electronics Engineering | University: Islamic University of Technology',
       'Masters Certification — No information provided on the website.',
     ],
     trainingExperience: 'No information provided on the website.',
@@ -222,14 +222,14 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Shahinur Rahman' },
       { label: 'Designation', value: 'Assistant Professor' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01958642411' },
     ],
     academicQualification: [
       'SSC Certification — Passing Year: 2012 | Group: Science | School: Chawradangi High School',
       'HSC Certification — Passing Year: 2014 | Group: Science | College: Rangpur Govt. College',
-      'Honours Certification — Passing Year: 2019 | Group: Mechanical Engineering | University: KUET',
+      'Honours Certification — Passing Year: 2019 | Group: Electrical and Electronics Engineering | University: KUET',
       'Masters Certification — No information provided on the website.',
     ],
     trainingExperience: 'No information provided on the website.',
@@ -247,14 +247,14 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'M. A. Faisal Junaeat Imrul' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01700936248' },
     ],
     academicQualification: [
       'SSC Certification — Passing Year: 2012 | Group: Science | School: Mawna High School, Gazipur',
       'HSC Certification — Passing Year: 2014 | Group: Science | College: Rajendrapur Cantonment Public College, Gazipur',
-      'Honours Certification — Passing Year: 2020 | Group: B.Sc. in Mechanical Engineering | University: Bangladesh Army University of Science and Technology',
+      'Honours Certification — Passing Year: 2020 | Group: B.Sc. in Electrical and Electronics Engineering | University: Bangladesh Army University of Science and Technology',
       'Masters Certification — No information provided on the website.',
     ],
     trainingExperience: [
@@ -277,7 +277,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Navid Inan' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01958642475' },
     ],
@@ -289,7 +289,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Misbah Uddin' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01836414499' },
     ],
@@ -306,7 +306,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Nahiyan Chowdhury' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01719987789' },
     ],
@@ -318,7 +318,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'M. I. Washif Rahman' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01818060447' },
       { label: 'Alt Contact', value: '01955529834' },
@@ -331,18 +331,18 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Khandoker Mohammad Faisal Karim' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01832385685' },
     ],
     academicQualification: [
       'SSC Certification — Passing Year: 2013 | Group: Science | School: Government Laboratory High School',
       'HSC Certification — Passing Year: 2015 | Group: Science | College: Notre Dame College',
-      'Honours Certification — Passing Year: 2021 | Group: Mechanical Engineering | University: Bangladesh University of Engineering and Technology',
-      'Masters Certification — Passing Year: 2026 | Group: Mechanical Engineering | University: Bangladesh University of Engineering and Technology',
+      'Honours Certification — Passing Year: 2021 | Group: Electrical and Electronics Engineering | University: Bangladesh University of Engineering and Technology',
+      'Masters Certification — Passing Year: 2026 | Group: Electrical and Electronics Engineering | University: Bangladesh University of Engineering and Technology',
     ],
     trainingExperience: [
-      'Industrial training in the Engineering Department, SANOFI Pharmaceuticals Ltd. as part of the B.Sc. in Mechanical Engineering program.',
+      'Industrial training in the Engineering Department, SANOFI Pharmaceuticals Ltd. as part of the B.Sc. in Electrical and Electronics Engineering program.',
     ],
     teachingArea: ['Heat Engineering and Fluid Engineering'],
     publications: 'No information provided on the website.',
@@ -357,7 +357,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Hasan Tareq Mahin' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01521408094' },
     ],
@@ -369,7 +369,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Rokiya Sultana' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01627542002' },
     ],
@@ -393,7 +393,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Ibrahim Khalil Apurba' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01957781158' },
       { label: 'Alt Contact', value: '01955529812' },
@@ -401,7 +401,7 @@ export const faculty: Faculty[] = [
     academicQualification: [
       'SSC Certification — Passing Year: 2014 | Group: Science | School: A. K. High School',
       'HSC Certification — Passing Year: 2016 | Group: Science | College: Notre Dame College',
-      'Honours Certification — Passing Year: 2016 | Group: Mechanical Engineering | University: Chittagong University of Engineering & Technology',
+      'Honours Certification — Passing Year: 2016 | Group: Electrical and Electronics Engineering | University: Chittagong University of Engineering & Technology',
       'Masters Certification — No information provided on the website.',
     ],
     trainingExperience: [
@@ -435,7 +435,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Toriqul Islam' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01957113357' },
     ],
@@ -447,7 +447,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Munkasir Ahnaf Jisba' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01860971800' },
     ],
@@ -459,7 +459,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Faruque Hossain' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01955529875' },
       { label: 'Alt Contact', value: '01717152521' },
@@ -467,8 +467,8 @@ export const faculty: Faculty[] = [
     academicQualification: [
       'SSC Certification — Passing Year: 2012 | Group: Science | School: Purba Saitara High School, Dinajpur',
       'HSC Certification — Passing Year: 2016 | Group: Power Technology | College: Dinajpur Polytechnic Institute, Dinajpur',
-      'Honours Certification — Passing Year: 2023 | Group: Mechanical Engineering | University: DUET, Gazipur',
-      'Masters Certification — Passing Year: Ongoing | Group: Mechanical Engineering | University: DUET, Gazipur',
+      'Honours Certification — Passing Year: 2023 | Group: Electrical and Electronics Engineering | University: DUET, Gazipur',
+      'Masters Certification — Passing Year: Ongoing | Group: Electrical and Electronics Engineering | University: DUET, Gazipur',
     ],
     trainingExperience: [
       'Workshop on "Outcome Based Education (OBE)", Institutional Quality Assurance Cell (IQAC), Sonargaon University, Dhaka, Bangladesh. (02 days, 2024)',
@@ -517,7 +517,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Sadman Hossain' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01675387100' },
     ],
@@ -529,15 +529,15 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Towheedur Rahman Tanvir' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01303039919' },
     ],
     academicQualification: [
       'SSC Certification — Passing Year: 2013 | Group: Science | School: No information provided on the website.',
       'HSC Certification — Passing Year: 2017 | Group: Shipbuilding Technology | College: Bangladesh Institute of Marine Technology, Narayanganj',
-      'Honours Certification — Passing Year: 2023 | Group: Mechanical Engineering | University: Dhaka University of Engineering & Technology (DUET)',
-      'Masters Certification — Passing Year: 2025 | Group: Mechanical Engineering | University: Dhaka University of Engineering & Technology (DUET)',
+      'Honours Certification — Passing Year: 2023 | Group: Electrical and Electronics Engineering | University: Dhaka University of Engineering & Technology (DUET)',
+      'Masters Certification — Passing Year: 2025 | Group: Electrical and Electronics Engineering | University: Dhaka University of Engineering & Technology (DUET)',
     ],
     trainingExperience: [
       'Industrial attachment at Ashuganj Power Station Company Ltd., Brahmanbaria. (4 Weeks, 2022)',
@@ -566,7 +566,7 @@ export const faculty: Faculty[] = [
       },
     ],
     awards: [
-      '"University Merit Scholarship" — awarded for sound academic performance in each semester of B.Sc. in Mechanical Engineering at DUET, Gazipur.',
+      '"University Merit Scholarship" — awarded for sound academic performance in each semester of B.Sc. in Electrical and Electronics Engineering at DUET, Gazipur.',
       '"Technical Merit Scholarship" — awarded for sound academic performance in each semester of Diploma in Engineering at Bangladesh Institute of Marine Technology, Narayanganj.',
     ],
   },
@@ -587,7 +587,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Nafis Iqbal' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01771551725' },
       { label: 'Alt Contact', value: '01732678978' },
@@ -605,7 +605,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Shafi Uddin Bhuiyan' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01707516365' },
     ],
@@ -617,14 +617,14 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Mahfujul Islam' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01551182174' },
     ],
     academicQualification: [
       'SSC Certification — Passing Year: 2014 | Group: Science | School: V. J. Govt. High School',
       'HSC Certification — Passing Year: 2016 | Group: Science | College: Chuadanga Govt. College',
-      'Honours Certification — Passing Year: 2022 | Group: Mechanical Engineering | University: Khulna University of Engineering & Technology',
+      'Honours Certification — Passing Year: 2022 | Group: Electrical and Electronics Engineering | University: Khulna University of Engineering & Technology',
       'Masters Certification — No information provided on the website.',
     ],
     trainingExperience: 'No information provided on the website.',
@@ -652,14 +652,14 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Khakan Hasan Mim' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01796176884' },
     ],
     academicQualification: [
       'SSC Certification — Passing Year: 2014 | Group: Science | School: Syedpur Cantonment Public School & College, Nilphamari',
       'HSC Certification — Passing Year: 2016 | Group: Science | College: Saidpur Govt. Technical College, Nilphamari',
-      'Honours Certification — Passing Year: 2022 | Group: Mechanical Engineering | University: Khulna University of Engineering and Technology, Khulna',
+      'Honours Certification — Passing Year: 2022 | Group: Electrical and Electronics Engineering | University: Khulna University of Engineering and Technology, Khulna',
       'Masters Certification — No information provided on the website.',
     ],
     trainingExperience: 'No information provided on the website.',
@@ -692,7 +692,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Ikramul Hasib' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01679114650' },
     ],
@@ -731,7 +731,7 @@ export const faculty: Faculty[] = [
     personalInfo: [
       { label: 'Name', value: 'Md. Anash Mia' },
       { label: 'Designation', value: 'Lecturer' },
-      { label: 'Department', value: 'Mechanical Engineering' },
+      { label: 'Department', value: 'Electrical and Electronics Engineering' },
       { label: 'Faculty', value: 'Faculty of Science & Engineering' },
       { label: 'Contact', value: '01779763212' },
     ],

@@ -10,7 +10,7 @@ import {
 } from '@/lib/identity';
 
 export const metadata = {
-  title: 'Message from Head — Department of Mechanical Engineering',
+  title: 'Message from Head — Department of Electrical and Electronics Engineering',
   description:
     'Welcome message from the Head of the Department of Mechanical Engineering, Sonargaon University.',
 };

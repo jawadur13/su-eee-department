@@ -50,7 +50,7 @@ export const labs: Lab[] = [
     name: 'Fluid Mechanics Lab',
     tagline: 'Measure flow, pressure, and the behaviour of liquids.',
     description:
-      'Featuring experimental setups to study fluid flow, pressure distribution, and the behaviour of liquids in various engineering applications, the Fluid Mechanics Lab is built around the practical needs of mechanical, automobile, and aerospace engineering students.',
+      'Featuring experimental setups to study fluid flow, pressure distribution, and the behaviour of liquids in various engineering applications, the Fluid Mechanics Lab is built around the practical needs of electrical and electronics engineering students.',
     heroImage: '/assets/labs/lab-fluid-hydraulics.webp',
     gallery: ['/assets/labs/lab-fluid-friction.webp'],
   },

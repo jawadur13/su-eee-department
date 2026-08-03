@@ -8,9 +8,9 @@ import { DynamicLucideIcon } from '@/components/ui/DynamicLucideIcon';
 import JoinMechaClubButton from './JoinMechaClubButton';
 
 export const metadata = {
-  title: 'Mecha Club — Department of Mechanical Engineering',
+  title: 'Mecha Club — Department of Electrical and Electronics Engineering',
   description:
-    'SU Mechanical Engineering Club (Mecha Club) — building industry-ready engineers through field visits, workshops, seminars, project showcases and an active alumni network.',
+    'SU Electrical and Electronic Club (SUEEC) — building industry-ready engineers through field visits, workshops, seminars, project showcases and an active alumni network.',
 };
 
 // Phase 20 — activities[].iconName resolves via DynamicLucideIcon
@@ -112,7 +112,7 @@ export default async function MechaClubPage() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[360px] md:h-[440px]">
               <Image
                 src={row.introImageUrl}
-                alt="Mecha Club members"
+                alt="SUEEC club members"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"

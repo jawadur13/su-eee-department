@@ -4,7 +4,7 @@ import { getSyllabi, getPageHero } from '@/lib/identity';
 import SyllabusClient from './SyllabusClient';
 
 export const metadata = {
-  title: 'Syllabus — Department of Mechanical Engineering',
+  title: 'Syllabus — Department of Electrical and Electronics Engineering',
   description:
     'Course-by-course syllabus for the Department of Mechanical Engineering, Sonargaon University.',
 };
