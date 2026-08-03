@@ -182,12 +182,18 @@ export const changeOwnPasswordSchema = z.object({
 // Prisma enum identifiers — underscored (no hyphens allowed).
 export const FacultyType = z.enum(['leadership', 'full_time', 'part_time']);
 
-// SectionContent — string | string[] | { heading, items }[]
+// SectionContent items — plain string, or { text, url? } carrying a link.
+const sectionItemSchema = z.union([
+  z.string(),
+  z.object({ text: z.string(), url: z.string().optional() }),
+]);
+
+// SectionContent — string | SectionItem[] | { heading, items }[]
 const sectionContentSchema = z.union([
   z.string(),
-  z.array(z.string()),
+  z.array(sectionItemSchema),
   z.array(
-    z.object({ heading: z.string(), items: z.array(z.string()).default([]) }),
+    z.object({ heading: z.string(), items: z.array(sectionItemSchema).default([]) }),
   ),
 ]);
 

@@ -10,7 +10,7 @@ import {
   getDepartmentIdentity,
   getUniversityIdentity,
 } from '@/lib/identity';
-import { type SectionContent } from '@/lib/faculty-data';
+import { type SectionContent, type SectionItem } from '@/lib/faculty-data';
 
 // Pre-render every current slug at build time; Next.js defaults to
 // dynamicParams=true so admin-added slugs after deploy render
@@ -60,6 +60,26 @@ const PLACEHOLDER = (
   <p className="text-gray-400 italic text-sm">Information will be updated soon.</p>
 );
 
+function renderItem(item: SectionItem, key: number) {
+  const text = typeof item === 'string' ? item : item.text;
+  const url = typeof item === 'string' ? undefined : item.url;
+  return (
+    <li key={key}>
+      <span>{text}</span>
+      {url && url.trim().length > 0 && (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-accent hover:text-primary underline break-all text-[13px] mt-0.5 transition-colors"
+        >
+          {url}
+        </a>
+      )}
+    </li>
+  );
+}
+
 function renderSection(value: SectionContent | null | undefined) {
   if (value == null) return PLACEHOLDER;
 
@@ -69,25 +89,25 @@ function renderSection(value: SectionContent | null | undefined) {
 
   if (!Array.isArray(value) || value.length === 0) return PLACEHOLDER;
 
-  if (typeof value[0] === 'string') {
+  const first = value[0];
+  const isGrouped =
+    typeof first === 'object' && first !== null && 'items' in first;
+
+  if (!isGrouped) {
     return (
       <ul className="list-disc list-outside pl-5 space-y-2">
-        {(value as string[]).map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+        {(value as SectionItem[]).map((item, i) => renderItem(item, i))}
       </ul>
     );
   }
 
   return (
     <div className="space-y-6">
-      {(value as { heading: string; items: string[] }[]).map((group, gi) => (
+      {(value as { heading: string; items: SectionItem[] }[]).map((group, gi) => (
         <div key={gi}>
           <h4 className="font-semibold text-primary mb-3 text-[15px]">{group.heading}</h4>
           <ul className="list-disc list-outside pl-5 space-y-2">
-            {group.items.map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
+            {group.items.map((item, i) => renderItem(item, i))}
           </ul>
         </div>
       ))}

@@ -3,58 +3,95 @@
 import { useState } from 'react';
 import { Plus, X } from 'lucide-react';
 
-type Group = { heading: string; items: string[] };
-type SectionContent = string | string[] | { heading: string; items: string[] }[];
+type Item = { text: string; url: string };
+type Group = { heading: string; items: Item[] };
+type SectionItem = string | { text: string; url?: string };
+type SectionContent =
+  | string
+  | SectionItem[]
+  | { heading: string; items: SectionItem[] }[];
 
 type Props = {
   name: string;
   label: string;
   initialValue: unknown;
+  // When true, each item gets an optional URL field (publications, research).
+  allowItemLinks?: boolean;
 };
+
+function toItem(v: unknown): Item {
+  if (typeof v === 'string') return { text: v, url: '' };
+  if (v && typeof v === 'object') {
+    const o = v as { text?: unknown; url?: unknown };
+    return {
+      text: typeof o.text === 'string' ? o.text : '',
+      url: typeof o.url === 'string' ? o.url : '',
+    };
+  }
+  return { text: '', url: '' };
+}
 
 // Normalize any SectionContent shape into Group[] for editing.
 function normalize(v: unknown): Group[] {
   if (v == null) return [];
-  if (typeof v === 'string') return [{ heading: '', items: [v] }];
+  if (typeof v === 'string') return [{ heading: '', items: [{ text: v, url: '' }] }];
   if (Array.isArray(v)) {
     if (v.length === 0) return [];
-    if (typeof v[0] === 'string') return [{ heading: '', items: v as string[] }];
+    const first = v[0];
+    const grouped =
+      typeof first === 'object' && first !== null && 'items' in (first as object);
+    if (!grouped) {
+      return [{ heading: '', items: (v as unknown[]).map(toItem) }];
+    }
     return (v as Array<{ heading?: unknown; items?: unknown }>).map((g) => ({
       heading: typeof g.heading === 'string' ? g.heading : '',
-      items: Array.isArray(g.items)
-        ? g.items.filter((i): i is string => typeof i === 'string')
-        : [],
+      items: Array.isArray(g.items) ? g.items.map(toItem) : [],
     }));
   }
   return [];
 }
 
-// Serialize Group[] back to the simplest matching SectionContent shape,
-// preserving round-trip identity for degenerate cases.
+// Serialize Group[] back to the simplest matching SectionContent shape.
+// A URL on any item forces the object form for that item; otherwise the
+// item collapses back to a plain string.
 function serialize(groups: Group[]): SectionContent | null {
   const cleaned = groups
     .map((g) => ({
       heading: g.heading.trim(),
-      items: g.items.map((i) => i.trim()).filter((i) => i.length > 0),
+      items: g.items
+        .map((it) => ({ text: it.text.trim(), url: it.url.trim() }))
+        .filter((it) => it.text.length > 0 || it.url.length > 0),
     }))
     .filter((g) => g.heading.length > 0 || g.items.length > 0);
 
   if (cleaned.length === 0) return null;
 
-  // Single group with no heading collapses back to string or string[].
+  const toSectionItem = (it: { text: string; url: string }): SectionItem =>
+    it.url.length > 0 ? { text: it.text, url: it.url } : it.text;
+
+  // Single group with no heading collapses back to string or item array.
   if (cleaned.length === 1 && cleaned[0].heading === '') {
-    if (cleaned[0].items.length === 1) return cleaned[0].items[0];
-    return cleaned[0].items;
+    const items = cleaned[0].items;
+    if (items.length === 1 && items[0].url.length === 0) return items[0].text;
+    return items.map(toSectionItem);
   }
 
-  return cleaned;
+  return cleaned.map((g) => ({
+    heading: g.heading,
+    items: g.items.map(toSectionItem),
+  }));
 }
 
-export default function SectionContentEditor({ name, label, initialValue }: Props) {
+export default function SectionContentEditor({
+  name,
+  label,
+  initialValue,
+  allowItemLinks = false,
+}: Props) {
   const [groups, setGroups] = useState<Group[]>(normalize(initialValue));
 
   function addGroup() {
-    setGroups([...groups, { heading: '', items: [''] }]);
+    setGroups([...groups, { heading: '', items: [{ text: '', url: '' }] }]);
   }
   function removeGroup(gi: number) {
     setGroups(groups.filter((_, idx) => idx !== gi));
@@ -64,13 +101,26 @@ export default function SectionContentEditor({ name, label, initialValue }: Prop
   }
   function addItem(gi: number) {
     setGroups(
-      groups.map((g, idx) => (idx === gi ? { ...g, items: [...g.items, ''] } : g)),
+      groups.map((g, idx) =>
+        idx === gi ? { ...g, items: [...g.items, { text: '', url: '' }] } : g,
+      ),
     );
   }
-  function updateItem(gi: number, ii: number, value: string) {
+  function updateItemText(gi: number, ii: number, value: string) {
     setGroups(
       groups.map((g, idx) =>
-        idx === gi ? { ...g, items: g.items.map((it, i) => (i === ii ? value : it)) } : g,
+        idx === gi
+          ? { ...g, items: g.items.map((it, i) => (i === ii ? { ...it, text: value } : it)) }
+          : g,
+      ),
+    );
+  }
+  function updateItemUrl(gi: number, ii: number, value: string) {
+    setGroups(
+      groups.map((g, idx) =>
+        idx === gi
+          ? { ...g, items: g.items.map((it, i) => (i === ii ? { ...it, url: value } : it)) }
+          : g,
       ),
     );
   }
@@ -126,13 +176,24 @@ export default function SectionContentEditor({ name, label, initialValue }: Prop
           <div className="space-y-1.5 pl-3 border-l-2 border-gray-200">
             {group.items.map((item, ii) => (
               <div key={ii} className="flex items-start gap-2">
-                <textarea
-                  value={item}
-                  onChange={(e) => updateItem(gi, ii, e.target.value)}
-                  rows={2}
-                  placeholder="Item text"
-                  className="flex-1 px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent resize-y bg-white"
-                />
+                <div className="flex-1 space-y-1.5">
+                  <textarea
+                    value={item.text}
+                    onChange={(e) => updateItemText(gi, ii, e.target.value)}
+                    rows={2}
+                    placeholder="Item text"
+                    className="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent resize-y bg-white"
+                  />
+                  {allowItemLinks && (
+                    <input
+                      type="url"
+                      value={item.url}
+                      onChange={(e) => updateItemUrl(gi, ii, e.target.value)}
+                      placeholder="Link (optional) — e.g. https://doi.org/…"
+                      className="w-full px-3 py-1.5 border border-gray-300 rounded-lg text-xs focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent bg-white"
+                    />
+                  )}
+                </div>
                 <button
                   type="button"
                   onClick={() => removeItem(gi, ii)}
