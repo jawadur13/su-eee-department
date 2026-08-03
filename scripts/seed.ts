@@ -598,7 +598,7 @@ async function seedAboutMissionVision() {
 }
 
 async function seedAboutMechaClub() {
-  await prisma.aboutMechaClub.upsert({
+  await prisma.aboutEeeClub.upsert({
     where: { id: 'singleton' },
     update: {},
     create: {
