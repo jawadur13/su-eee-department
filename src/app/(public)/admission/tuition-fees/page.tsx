@@ -5,7 +5,7 @@ import { sanitizeHtml } from '@/lib/sanitize-html';
 import { DynamicLucideIcon } from '@/components/ui/DynamicLucideIcon';
 
 export const metadata = {
-  title: 'Tuition Fees — Department of Mechanical Engineering',
+  title: 'Tuition Fees — Department of Electrical and Electronics Engineering',
   description:
     'Tuition fee structures by program at Sonargaon University Department of Mechanical Engineering.',
 };

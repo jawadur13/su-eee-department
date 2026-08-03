@@ -40,7 +40,7 @@ const staticPages: SearchItem[] = [
   { title: 'Mission & Vision', type: 'Page', href: '/about/mission-vision', description: "Department's mission and long-term vision" },
   { title: 'Laboratory Facility', type: 'Page', href: '/about/laboratory-facility', description: 'Departmental labs and equipment' },
   { title: 'Lab Facility', type: 'Page', href: '/about/lab-facility', description: 'List of all departmental labs' },
-  { title: 'Mecha Club', type: 'Page', href: '/about/mecha-club', description: 'Sonargaon University Mecha Club (SUMEC)' },
+  { title: 'SU Electrical and Electronic Club', type: 'Page', href: '/about/eee-club', description: 'SU Electrical and Electronic Club (SUEEC)' },
 
   // Faculty
   { title: 'Faculty Members', type: 'Page', href: '/faculty-member', description: 'List of all faculty members' },
@@ -323,7 +323,7 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
 
   // ProgramFeeStructure (Phase 8b — DB). Per-program fee entries.
   // introOverline carries the user-facing program label (e.g.
-  // "B.Sc. in Mechanical Engineering (ME)"). All entries link to
+  // "B.Sc. in Electrical and Electronics Engineering (EEE)"). All entries link to
   // /admission/tuition-fees — programs render stacked there.
   const feeItems: SearchItem[] = feeStructureRows.map((f) => ({
     title: f.introOverline,

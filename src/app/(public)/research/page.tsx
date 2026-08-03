@@ -4,7 +4,7 @@ import Container from '@/components/ui/Container';
 import { getResearchPapers, getPageHero } from '@/lib/identity';
 
 export const metadata = {
-  title: 'Research — Department of Mechanical Engineering',
+  title: 'Research — Department of Electrical and Electronics Engineering',
   description:
     'Published research papers from the Department of Mechanical Engineering, Sonargaon University.',
 };

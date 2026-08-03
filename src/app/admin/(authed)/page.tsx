@@ -244,9 +244,9 @@ export default async function DashboardHome() {
             desc="Mission card + Vision card content"
           />
           <ActionCard
-            href="/admin/about-mecha-club"
+            href="/admin/about-eee-club"
             icon={Info}
-            title="About — Mecha Club"
+            title="About — SUEEC"
             desc="Hero, intro, stats, activities, network"
           />
           <ActionCard

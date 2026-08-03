@@ -2,15 +2,15 @@ import Image from 'next/image';
 import { ArrowRight, Network } from 'lucide-react';
 import PageShell from '@/components/layout/PageShell';
 import Container from '@/components/ui/Container';
-import { getAboutMechaClub } from '@/lib/identity';
+import { getAboutEeeClub } from '@/lib/identity';
 import { sanitizeHtml } from '@/lib/sanitize-html';
 import { DynamicLucideIcon } from '@/components/ui/DynamicLucideIcon';
-import JoinMechaClubButton from './JoinMechaClubButton';
+import JoinEeeClubButton from './JoinEeeClubButton';
 
 export const metadata = {
-  title: 'Mecha Club — Department of Mechanical Engineering',
+  title: 'SU Electrical and Electronic Club — Department of Electrical and Electronics Engineering',
   description:
-    'SU Mechanical Engineering Club (Mecha Club) — building industry-ready engineers through field visits, workshops, seminars, project showcases and an active alumni network.',
+    'SU Electrical and Electronic Club (SUEEC) — building industry-ready engineers through field visits, workshops, seminars, project showcases and an active alumni network.',
 };
 
 // Phase 20 — activities[].iconName resolves via DynamicLucideIcon
@@ -53,11 +53,11 @@ function coerceActivities(v: unknown): ActivityRow[] {
     .filter((r) => r.title);
 }
 
-export default async function MechaClubPage() {
-  const row = await getAboutMechaClub();
+export default async function AboutEeeClubPage() {
+  const row = await getAboutEeeClub();
   if (!row) {
     throw new Error(
-      'AboutMechaClub row missing (id="singleton"). Run `npm run db:seed`.',
+      'AboutEeeClub row missing (id="singleton"). Run `npm run db:seed`.',
     );
   }
 
@@ -112,7 +112,7 @@ export default async function MechaClubPage() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[360px] md:h-[440px]">
               <Image
                 src={row.introImageUrl}
-                alt="Mecha Club members"
+                alt="SUEEC club members"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
@@ -205,12 +205,7 @@ export default async function MechaClubPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
-              {/* Primary CTA opens an in-app application form modal
-                  instead of linking out — chair's request. Label still
-                  comes from the DB so admin can rename via
-                  /admin/about-mecha-club; networkPrimaryCtaHref is
-                  intentionally unused for this CTA now. */}
-              <JoinMechaClubButton label={row.networkPrimaryCtaLabel} />
+              <JoinEeeClubButton label={row.networkPrimaryCtaLabel} />
               {row.networkSecondaryCtaLabel && row.networkSecondaryCtaHref && (
                 <a
                   href={row.networkSecondaryCtaHref}

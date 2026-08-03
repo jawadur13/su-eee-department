@@ -4,7 +4,7 @@ import { getAboutOverview } from '@/lib/identity';
 import { sanitizeHtml } from '@/lib/sanitize-html';
 
 export const metadata = {
-  title: 'Overview — Department of Mechanical Engineering',
+  title: 'Overview — Department of Electrical and Electronics Engineering',
   description:
     'Overview of the Department of Mechanical Engineering — programs, vision, and the scope of mechanical engineering as a discipline and a career.',
 };
