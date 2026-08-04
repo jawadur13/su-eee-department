@@ -867,9 +867,11 @@ const overviewStatSchema = z.object({
 });
 
 const feeTierSchema = z.object({
-  gpa:       z.string().min(1),
-  perCredit: z.number(),
-  total:     z.number(),
+  gpa:          z.string().min(1),
+  waiver:       z.string().optional(),
+  totalCredits: z.number().optional(),
+  perCredit:    z.number(),
+  total:        z.number(),
 });
 
 const feeGroupSchema = z.object({

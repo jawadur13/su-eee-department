@@ -10,8 +10,8 @@ import IconInputField from './IconInputField';
 //   Shift (iconName, name, shiftLabel, description)
 //     └─ groups []
 //          └─ Group (background)
-//                └─ tiers []
-//                     └─ Tier (gpa, perCredit, total)
+//     └─ tiers []
+//          └─ Tier (gpa, totalCredits, perCredit, total)
 //
 // Each level uses its own FormSortableList instance so drag-reorder
 // is scoped per level (a tier can't be dragged out of its group).
@@ -24,6 +24,8 @@ import IconInputField from './IconInputField';
 type Tier = {
   id: string;
   gpa: string;
+  waiver: string;
+  totalCredits: string;
   perCredit: string;
   total: string;
 };
@@ -65,10 +67,12 @@ function normalize(initial: unknown): Shift[] {
                 ? (g.tiers as unknown[])
                     .filter((t): t is Record<string, unknown> => typeof t === 'object' && t !== null)
                     .map((t) => ({
-                      id:        genId('ti'),
-                      gpa:       typeof t.gpa === 'string' ? t.gpa : '',
-                      perCredit: typeof t.perCredit === 'number' ? String(t.perCredit) : (typeof t.perCredit === 'string' ? t.perCredit : ''),
-                      total:     typeof t.total     === 'number' ? String(t.total)     : (typeof t.total     === 'string' ? t.total     : ''),
+                      id:           genId('ti'),
+                      gpa:          typeof t.gpa          === 'string' ? t.gpa          : '',
+                      waiver:       typeof t.waiver       === 'string' ? t.waiver       : '',
+                      totalCredits: typeof t.totalCredits === 'number' ? String(t.totalCredits) : (typeof t.totalCredits === 'string' ? t.totalCredits : ''),
+                      perCredit:    typeof t.perCredit    === 'number' ? String(t.perCredit)    : (typeof t.perCredit    === 'string' ? t.perCredit    : ''),
+                      total:        typeof t.total        === 'number' ? String(t.total)        : (typeof t.total     === 'string' ? t.total     : ''),
                     }))
                 : [],
             }))
@@ -129,7 +133,7 @@ export default function ShiftsEditor({ name, initialValue }: Props) {
       ? {
           ...s,
           groups: s.groups.map((g) => g.id === groupId
-            ? { ...g, tiers: [...g.tiers, { id: genId('ti'), gpa: '', perCredit: '', total: '' }] }
+            ? { ...g, tiers: [...g.tiers, { id: genId('ti'), gpa: '', waiver: '', totalCredits: '', perCredit: '', total: '' }] }
             : g),
         }
       : s));
@@ -144,7 +148,7 @@ export default function ShiftsEditor({ name, initialValue }: Props) {
         }
       : s));
   }
-  function updateTier(shiftId: string, groupId: string, tierId: string, field: 'gpa' | 'perCredit' | 'total', val: string) {
+  function updateTier(shiftId: string, groupId: string, tierId: string, field: 'gpa' | 'waiver' | 'totalCredits' | 'perCredit' | 'total', val: string) {
     setShifts(shifts.map((s) => s.id === shiftId
       ? {
           ...s,
@@ -177,6 +181,8 @@ export default function ShiftsEditor({ name, initialValue }: Props) {
       background: g.background,
       tiers: g.tiers.map((t) => ({
         gpa: t.gpa,
+        waiver: t.waiver || undefined,
+        totalCredits: Number(t.totalCredits) || undefined,
         perCredit: Number(t.perCredit) || 0,
         total:     Number(t.total)     || 0,
       })),
@@ -246,7 +252,7 @@ function ShiftCard({
   onReorderGroups: (orderedIds: string[]) => void;
   onAddTier: (groupId: string) => void;
   onRemoveTier: (groupId: string, tierId: string) => void;
-  onUpdateTier: (groupId: string, tierId: string, field: 'gpa' | 'perCredit' | 'total', val: string) => void;
+  onUpdateTier: (groupId: string, tierId: string, field: 'gpa' | 'waiver' | 'totalCredits' | 'perCredit' | 'total', val: string) => void;
   onReorderTiers: (groupId: string, orderedIds: string[]) => void;
 }) {
   return (
@@ -368,10 +374,16 @@ function GroupCard({
           getId={(t) => t.id}
           onReorder={onReorderTiers}
           renderItem={(tier) => (
-            <div className="bg-white border border-gray-200 rounded grid grid-cols-1 md:grid-cols-[1fr_120px_120px_auto] gap-1.5 p-2 items-start">
+            <div className="bg-white border border-gray-200 rounded grid grid-cols-1 md:grid-cols-[1fr_80px_80px_100px_100px_auto] gap-1.5 p-2 items-start">
               <Input label="GPA range" value={tier.gpa}
                      onChange={(v) => onUpdateTier(tier.id, 'gpa', v)}
                      placeholder="5.00 – 8.99" />
+              <Input label="Waiver" value={tier.waiver}
+                     onChange={(v) => onUpdateTier(tier.id, 'waiver', v)}
+                     placeholder="55%" />
+              <Input label="Credits" value={tier.totalCredits} inputMode="numeric"
+                     onChange={(v) => onUpdateTier(tier.id, 'totalCredits', v)}
+                     placeholder="161" />
               <Input label="Per credit" value={tier.perCredit} inputMode="numeric"
                      onChange={(v) => onUpdateTier(tier.id, 'perCredit', v)}
                      placeholder="975" />
