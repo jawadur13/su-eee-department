@@ -834,6 +834,7 @@ model ResearchPaper {
   // structured sort key.
   date            String?
   publicationYear Int?
+  links           Json     @default("[]")
   displayOrder    Int
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt

@@ -717,6 +717,7 @@ export const researchPaperCreateSchema = z.object({
   area:            z.string().min(1),
   date:            optionalNullableString,
   publicationYear: z.number().int().min(1900).max(2100).nullable().optional(),
+  links:           z.array(z.object({ label: z.string(), value: z.string() })).default([]),
 });
 
 export const researchPaperUpdateSchema = researchPaperCreateSchema;

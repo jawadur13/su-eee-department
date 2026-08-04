@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Users, FileText } from 'lucide-react';
+import { Calendar, MapPin, Users, FileText, ExternalLink } from 'lucide-react';
 import PageShell from '@/components/layout/PageShell';
 import Container from '@/components/ui/Container';
 import { getResearchPapers, getPageHero } from '@/lib/identity';
@@ -6,7 +6,7 @@ import { getResearchPapers, getPageHero } from '@/lib/identity';
 export const metadata = {
   title: 'Research — Department of Electrical and Electronics Engineering',
   description:
-    'Published research papers from the Department of Mechanical Engineering, Sonargaon University.',
+    'Published research papers from the Department of Electrical and Electronics Engineering, Sonargaon University.',
 };
 
 export default async function ResearchPage() {
@@ -28,8 +28,8 @@ export default async function ResearchPage() {
         <div className="mx-auto max-w-3xl text-center mb-10 md:mb-14">
           <p className="text-[15px] md:text-[16px] leading-[1.85] text-gray-700">
             A selection of research publications by faculty and students of the
-            Department of Mechanical Engineering, Sonargaon University, spanning
-            thermodynamics, fluid mechanics, materials science, energy systems,
+            Department of Electrical and Electronics Engineering, Sonargaon University, spanning
+            VLSI design, signal processing, renewable energy, communication systems,
             and more.
           </p>
           <p className="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-primary bg-primary/5 px-4 py-1.5 rounded-full">
@@ -78,6 +78,23 @@ export default async function ResearchPage() {
                     <MapPin size={13} className="shrink-0 mt-1 text-gray-400" />
                     <span className="text-gray-500">{paper.area}</span>
                   </div>
+
+                  {Array.isArray(paper.links) && paper.links.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-gray-100">
+                      {paper.links.filter((l: any) => l?.label && l?.value).map((link: any, i: number) => (
+                        <a
+                          key={i}
+                          href={link.value}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-accent bg-accent/5 hover:bg-accent/10 px-2.5 py-1 rounded-full transition-colors"
+                        >
+                          <ExternalLink size={11} />
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </article>
             ))}
