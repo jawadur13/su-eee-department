@@ -9,9 +9,9 @@ import {ChevronRight, Home} from 'lucide-react';
 // (Phase 3). When an admin replaces a hero image, they edit the
 // matching alt in the same form. Null alt → generic slot label.
 const FALLBACK_ALTS = [
-  'Sonargaon University Mechanical Engineering Department',
-  'Sonargaon University Mechanical Engineering students and faculty',
-  'Sonargaon University Mechanical Engineering campus',
+  'Sonargaon University Electrical and Electronics Engineering Department',
+  'Sonargaon University Electrical and Electronics Engineering students and faculty',
+  'Sonargaon University Electrical and Electronics Engineering campus',
 ];
 
 type HeroSectionProps = {
@@ -32,7 +32,7 @@ export default function HeroSection({
 }: HeroSectionProps) {
   const heroImages = imageUrls.map((src, i) => ({
     src,
-    alt: imageAlts[i] ?? FALLBACK_ALTS[i] ?? `Sonargaon University Mechanical Engineering — slide ${i + 1}`,
+    alt: imageAlts[i] ?? FALLBACK_ALTS[i] ?? `Sonargaon University Electrical and Electronics Engineering — slide ${i + 1}`,
     verticalPercent: imageVerticalPercents[i] ?? 50,
   }));
   const [activeImage, setActiveImage] = useState(0);
@@ -108,7 +108,7 @@ export default function HeroSection({
             transition={{ delay: 0.35, duration: 0.8 }}
             className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white uppercase tracking-tight leading-tight drop-shadow-2xl"
           >
-            Mechanical <br /> Engineering <span className="text-button-yellow">(ME)</span>
+            Electrical &amp; <br /> Electronics <span className="text-button-yellow">(EEE)</span>
           </motion.h1>
 
           {/* Subtitle */}

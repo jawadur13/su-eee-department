@@ -5,7 +5,7 @@ import Container from '@/components/ui/Container';
 import { getVisitors, getPageHero } from '@/lib/identity';
 
 export const metadata = {
-  title: 'Visitors — Department of Mechanical Engineering',
+  title: 'Visitors — Department of Electrical and Electronics Engineering',
   description:
     'Distinguished visitors and guests of the Department of Mechanical Engineering, Sonargaon University.',
 };

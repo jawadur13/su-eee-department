@@ -5,9 +5,9 @@ import { sanitizeHtml } from '@/lib/sanitize-html';
 import { DynamicLucideIcon } from '@/components/ui/DynamicLucideIcon';
 
 export const metadata = {
-  title: 'Tuition Fees — Department of Mechanical Engineering',
+  title: 'Tuition Fees — Department of Electrical and Electronics Engineering',
   description:
-    'Tuition fee structures by program at Sonargaon University Department of Mechanical Engineering.',
+    'Tuition fee structures by program at Sonargaon University Department of Electrical and Electronics Engineering.',
 };
 
 // Phase 20 — overview / shifts / policies all use DynamicLucideIcon
@@ -17,7 +17,7 @@ export const metadata = {
 // ─── Json column shapes (defensive coerce) ───────────────────────
 
 type OverviewStat = { iconName: string; label: string; value: string };
-type FeeTier = { gpa: string; perCredit: number; total: number };
+type FeeTier = { gpa: string; waiver?: string; totalCredits?: number; perCredit: number; total: number };
 type FeeGroup = { background: string; tiers: FeeTier[] };
 type FeeShift = {
   iconName: string;
@@ -45,9 +45,11 @@ function coerceTiers(v: unknown): FeeTier[] {
   return v
     .filter((r): r is Record<string, unknown> => typeof r === 'object' && r !== null)
     .map((r) => ({
-      gpa:       typeof r.gpa       === 'string' ? r.gpa       : '',
-      perCredit: typeof r.perCredit === 'number' ? r.perCredit : 0,
-      total:     typeof r.total     === 'number' ? r.total     : 0,
+      gpa:          typeof r.gpa          === 'string' ? r.gpa          : '',
+      waiver:       typeof r.waiver       === 'string' ? r.waiver       : undefined,
+      totalCredits: typeof r.totalCredits === 'number' ? r.totalCredits : undefined,
+      perCredit:    typeof r.perCredit    === 'number' ? r.perCredit    : 0,
+      total:        typeof r.total        === 'number' ? r.total        : 0,
     }))
     .filter((t) => t.gpa);
 }
@@ -217,6 +219,12 @@ export default async function TuitionFeesPage() {
                                             GPA Range
                                           </th>
                                           <th className="px-3 py-3 text-[11px] font-bold tracking-wider uppercase text-gray-500 text-right">
+                                            Waiver
+                                          </th>
+                                          <th className="px-3 py-3 text-[11px] font-bold tracking-wider uppercase text-gray-500 text-right">
+                                            Credits
+                                          </th>
+                                          <th className="px-3 py-3 text-[11px] font-bold tracking-wider uppercase text-gray-500 text-right">
                                             Per Credit
                                           </th>
                                           <th className="px-3 py-3 text-[11px] font-bold tracking-wider uppercase text-gray-500 text-right">
@@ -232,8 +240,14 @@ export default async function TuitionFeesPage() {
                                           >
                                             <td className="px-3 py-4">
                                               <span className="inline-block px-3 py-1 bg-primary/8 text-primary text-sm font-semibold rounded">
-                                                GPA {tier.gpa}
+                                                {tier.gpa}
                                               </span>
+                                            </td>
+                                            <td className="px-3 py-4 text-right font-display font-bold text-accent">
+                                              {tier.waiver || '—'}
+                                            </td>
+                                            <td className="px-3 py-4 text-right font-display font-bold text-gray-800">
+                                              {tier.totalCredits ?? '—'}
                                             </td>
                                             <td className="px-3 py-4 text-right font-display font-bold text-gray-800">
                                               {fmt(tier.perCredit)}

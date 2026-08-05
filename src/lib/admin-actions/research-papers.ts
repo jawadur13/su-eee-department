@@ -37,12 +37,16 @@ function revalidateResearchPaperSurfaces() {
 }
 
 function readResearchPaperRow(formData: FormData) {
+  let links: { label: string; value: string }[] = [];
+  try { links = JSON.parse(getStr(formData, 'links') || '[]'); } catch { /* keep [] */ }
+
   return {
     title:           getStr(formData, 'title'),
     authors:         getStr(formData, 'authors'),
     area:            getStr(formData, 'area'),
     date:            emptyToNull(formData.get('date')),
     publicationYear: getIntOrNull(formData, 'publicationYear'),
+    links,
   };
 }
 

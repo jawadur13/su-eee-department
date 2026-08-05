@@ -11,9 +11,9 @@ export const programs: {
   {
     id: 'undergrad',
     title: 'Undergraduate',
-    subtitle: 'B.Sc in Mechanical Engineering',
+    subtitle: 'B.Sc. in Electrical and Electronics Engineering',
     duration: '4 Years · 8 Semesters',
-    description: 'Our flagship undergraduate program builds a strong foundation in core mechanical engineering — combining rigorous theory, modern lab practice, and design projects that prepare graduates for industry, research, and global postgraduate study.',
+    description: 'Our flagship undergraduate program builds a strong foundation in core electrical and electronics engineering — combining rigorous theory, modern lab practice, and design projects that prepare graduates for industry, research, and global postgraduate study.',
     image: '/assets/program-undergraduate.webp',
     specializations: [
       'Thermal Engineering',

@@ -4,8 +4,8 @@ import { getProspectusEntries, getPageHero } from '@/lib/identity';
 import ProspectusClient from './ProspectusClient';
 
 export const metadata = {
-  title: 'Prospectus — Department of Mechanical Engineering',
-  description: 'Program prospectus PDFs for Mechanical Engineering at Sonargaon University.',
+  title: 'Prospectus — Department of Electrical and Electronics Engineering',
+  description:     'Program prospectus PDFs for Electrical and Electronics Engineering at Sonargaon University.',
 };
 
 export default async function ProspectusPage() {

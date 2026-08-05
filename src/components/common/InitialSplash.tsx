@@ -19,7 +19,7 @@
 import { useEffect, useState } from 'react';
 import BrandedLoader from './BrandedLoader';
 
-const STORAGE_KEY = 'mech_eng_splash_seen';
+const STORAGE_KEY = 'eee_splash_seen';
 const MIN_VISIBLE_MS = 600;   // brand-moment cap, not artificial wait
 const FADE_OUT_MS    = 300;
 

@@ -317,3 +317,215 @@ NEW: @@map("eee_club_application")
 #    grep -ri "mechanical" .
 #
 #  Fix any remaining references you find.
+
+
+# ════════════════════════════════════════════════════════════════
+#  ADDENDUM (added after codebase verification — 2026-08-02)
+#  These items were MISSING from the original Steps 1–7 and WILL
+#  BREAK `npx prisma generate` + `tsc`/`next build` if skipped.
+#  Reason: renaming a Prisma model also renames the generated
+#  camelCase client accessor (prisma.aboutMechaClub → prisma.aboutEeeClub)
+#  and the generated TS type (AboutMechaClub → AboutEeeClub). Every
+#  call site and every Zod schema/action/component identifier that
+#  references the old names must be updated in lockstep.
+#  See temporary/08-verification-notes.txt for the full rationale.
+# ════════════════════════════════════════════════════════════════
+
+
+# ──────────────────────────────────────────────────────────────────
+#  A1. MISSING DIRECTORY — admin API route (not covered by Step 1)
+# ──────────────────────────────────────────────────────────────────
+
+RENAME: src/app/api/admin/about-mecha-club/
+   TO:  src/app/api/admin/about-eee-club/
+
+#  File inside: src/app/api/admin/about-eee-club/route.ts
+#  Content changes:
+OLD: import { aboutMechaClubUpdateSchema } from '@/lib/validation';
+NEW: import { aboutEeeClubUpdateSchema } from '@/lib/validation';
+
+OLD: const row = await prisma.aboutMechaClub.findUnique({ where: { id: 'singleton' } });
+NEW: const row = await prisma.aboutEeeClub.findUnique({ where: { id: 'singleton' } });
+
+OLD: return NextResponse.json({ aboutMechaClub: row });
+NEW: return NextResponse.json({ aboutEeeClub: row });
+#  ^^ appears twice (GET + PUT) — replace both
+
+OLD: const parsed = aboutMechaClubUpdateSchema.parse(body);
+NEW: const parsed = aboutEeeClubUpdateSchema.parse(body);
+
+OLD: const row = await prisma.aboutMechaClub.upsert({
+NEW: const row = await prisma.aboutEeeClub.upsert({
+
+
+# ──────────────────────────────────────────────────────────────────
+#  A2. PRISMA CLIENT ACCESSORS  (prisma.aboutMechaClub / prisma.mechaClubApplication)
+#  These are AUTO-GENERATED from the model names. After the Step 5
+#  schema rename, they become prisma.aboutEeeClub / prisma.eeeClubApplication.
+#  Update ALL call sites:
+# ──────────────────────────────────────────────────────────────────
+
+#  src/lib/identity.ts
+OLD: export const getAboutMechaClub = cache(async () => {
+NEW: export const getAboutEeeClub = cache(async () => {
+
+OLD:   return prisma.aboutMechaClub.findUnique({ where: { id: 'singleton' } });
+NEW:   return prisma.aboutEeeClub.findUnique({ where: { id: 'singleton' } });
+
+#  src/lib/admin-actions/about-eee-club.ts  (formerly about-mecha-club.ts)
+OLD:     await prisma.aboutMechaClub.upsert({
+NEW:     await prisma.aboutEeeClub.upsert({
+
+#  src/lib/admin-actions/eee-club-applications.ts  (formerly mecha-club-applications.ts)
+OLD:     await prisma.mechaClubApplication.update({
+NEW:     await prisma.eeeClubApplication.update({
+
+OLD:     await prisma.mechaClubApplication.delete({ where: { id } });
+NEW:     await prisma.eeeClubApplication.delete({ where: { id } });
+
+#  src/app/admin/(authed)/about-eee-club/page.tsx
+OLD:   const row = await prisma.aboutMechaClub.findUnique({ where: { id: 'singleton' } });
+NEW:   const row = await prisma.aboutEeeClub.findUnique({ where: { id: 'singleton' } });
+
+#  src/app/admin/(authed)/eee-club-applications/page.tsx
+OLD:   const applications = await prisma.mechaClubApplication.findMany({
+NEW:   const applications = await prisma.eeeClubApplication.findMany({
+
+#  src/app/api/eee-club/apply/route.ts  (formerly api/mecha-club/apply/route.ts)
+OLD:     await prisma.mechaClubApplication.create({
+NEW:     await prisma.eeeClubApplication.create({
+
+
+# ──────────────────────────────────────────────────────────────────
+#  A3. GENERATED PRISMA TYPE IMPORT
+# ──────────────────────────────────────────────────────────────────
+
+#  src/app/admin/(authed)/about-eee-club/AboutEeeClubForm.tsx
+OLD: import type { AboutMechaClub } from '@prisma/client';
+NEW: import type { AboutEeeClub } from '@prisma/client';
+
+OLD: export default function AboutMechaClubForm({ initial }: { initial: AboutMechaClub | null }) {
+NEW: export default function AboutEeeClubForm({ initial }: { initial: AboutEeeClub | null }) {
+
+
+# ──────────────────────────────────────────────────────────────────
+#  A4. ZOD VALIDATION SCHEMA NAMES  (src/lib/validation.ts)
+#  Original Step 4l only changed a COMMENT. The exported schema
+#  identifiers themselves must be renamed, plus every import of them.
+# ──────────────────────────────────────────────────────────────────
+
+#  In src/lib/validation.ts:
+OLD: export const aboutMechaClubUpdateSchema = z.object({
+NEW: export const aboutEeeClubUpdateSchema = z.object({
+
+OLD: // Mirrors the AboutMechaClub.activities shape (Json structured editor)
+NEW: // Mirrors the AboutEeeClub.activities shape (Json structured editor)
+
+OLD: const mechaClubSemesterEnum = z.enum(['1', '2', '3', '4', '5', '6', '7', '8']);
+NEW: const eeeClubSemesterEnum = z.enum(['1', '2', '3', '4', '5', '6', '7', '8']);
+
+OLD: export const mechaClubApplicationCreateSchema = z.object({
+NEW: export const eeeClubApplicationCreateSchema = z.object({
+
+OLD:   semester:   mechaClubSemesterEnum,
+NEW:   semester:   eeeClubSemesterEnum,
+
+OLD: export const mechaClubApplicationStatusEnum = z.enum([
+NEW: export const eeeClubApplicationStatusEnum = z.enum([
+
+OLD: export const mechaClubApplicationStatusUpdateSchema = z.object({
+NEW: export const eeeClubApplicationStatusUpdateSchema = z.object({
+
+OLD:   status: mechaClubApplicationStatusEnum,
+NEW:   status: eeeClubApplicationStatusEnum,
+
+#  ── Imports of these schemas (update in each file) ──
+#  src/lib/admin-actions/about-eee-club.ts:
+OLD: import { aboutMechaClubUpdateSchema } from '@/lib/validation';
+NEW: import { aboutEeeClubUpdateSchema } from '@/lib/validation';
+OLD:   const parsed = aboutMechaClubUpdateSchema.safeParse(raw);
+NEW:   const parsed = aboutEeeClubUpdateSchema.safeParse(raw);
+
+#  src/lib/admin-actions/eee-club-applications.ts:
+OLD: import { mechaClubApplicationStatusUpdateSchema } from '@/lib/validation';
+NEW: import { eeeClubApplicationStatusUpdateSchema } from '@/lib/validation';
+OLD:   const parsed = mechaClubApplicationStatusUpdateSchema.safeParse({ status: rawStatus });
+NEW:   const parsed = eeeClubApplicationStatusUpdateSchema.safeParse({ status: rawStatus });
+
+#  src/app/api/eee-club/apply/route.ts:
+OLD: import { mechaClubApplicationCreateSchema } from '@/lib/validation';
+NEW: import { eeeClubApplicationCreateSchema } from '@/lib/validation';
+OLD:   const parsed = mechaClubApplicationCreateSchema.safeParse(body);
+NEW:   const parsed = eeeClubApplicationCreateSchema.safeParse(body);
+
+
+# ──────────────────────────────────────────────────────────────────
+#  A5. EXPORTED ACTION / COMPONENT / PAGE FUNCTION IDENTIFIERS
+#  Rename for consistency AND update their imports/usages.
+# ──────────────────────────────────────────────────────────────────
+
+#  src/lib/admin-actions/about-eee-club.ts:
+OLD: export async function updateAboutMechaClubAction(
+NEW: export async function updateAboutEeeClubAction(
+
+#  src/lib/admin-actions/eee-club-applications.ts:
+OLD: export async function updateMechaClubApplicationStatusAction(
+NEW: export async function updateEeeClubApplicationStatusAction(
+OLD: export async function deleteMechaClubApplicationAction(
+NEW: export async function deleteEeeClubApplicationAction(
+#  Also the revalidatePath('/admin/mecha-club-applications') inside
+#  revalidateSurfaces() → '/admin/eee-club-applications' (already noted in 4i,
+#  but this file has it inside a helper fn named revalidateSurfaces()).
+
+#  src/app/admin/(authed)/about-eee-club/AboutEeeClubForm.tsx:
+OLD:   updateAboutMechaClubAction,
+NEW:   updateAboutEeeClubAction,
+#  ^^ appears in both the import block and the useActionState/useFormState call
+
+#  src/app/admin/(authed)/about-eee-club/page.tsx:
+OLD: export default async function AboutMechaClubPage() {
+NEW: export default async function AboutEeeClubPage() {
+
+#  src/app/admin/(authed)/eee-club-applications/page.tsx:
+OLD: export default async function MechaClubApplicationsPage() {
+NEW: export default async function EeeClubApplicationsPage() {
+
+#  src/app/admin/(authed)/eee-club-applications/ApplicationsList.tsx:
+OLD:   deleteMechaClubApplicationAction,
+NEW:   deleteEeeClubApplicationAction,
+OLD:   updateMechaClubApplicationStatusAction,
+NEW:   updateEeeClubApplicationStatusAction,
+OLD:     const res = await updateMechaClubApplicationStatusAction(id, next);
+NEW:     const res = await updateEeeClubApplicationStatusAction(id, next);
+OLD:     const res = await deleteMechaClubApplicationAction(id);
+NEW:     const res = await deleteEeeClubApplicationAction(id);
+
+
+# ──────────────────────────────────────────────────────────────────
+#  A6. ADDITIONAL schema.prisma COMMENTS (beyond Step 5 model names)
+# ──────────────────────────────────────────────────────────────────
+
+OLD:   // Same Json shape pattern as Phase 4 AboutMechaClub.activities;
+NEW:   // Same Json shape pattern as Phase 4 AboutEeeClub.activities;
+
+OLD:   introOverline   String                  // e.g., "B.Sc. in Mechanical Engineering (ME)"
+NEW:   introOverline   String                  // e.g., "B.Sc. in Electrical and Electronics Engineering (EEE)"
+
+OLD: // own a singleton with hero fields (AboutOverview, AboutMechaClub,
+NEW: // own a singleton with hero fields (AboutOverview, AboutEeeClub,
+
+OLD: // Mecha Club join applications — populated by the public popup form
+NEW: // SUEEC join applications — populated by the public popup form
+OLD: // on /about/mecha-club. Admin reviews + approves/rejects via
+NEW: // on /about/eee-club. Admin reviews + approves/rejects via
+OLD: // /admin/mecha-club-applications.
+NEW: // /admin/eee-club-applications.
+
+
+# ──────────────────────────────────────────────────────────────────
+#  A7. AFTER SCHEMA RENAME — you MUST regenerate the client
+# ──────────────────────────────────────────────────────────────────
+#  Run:  npx prisma generate
+#  Then: npx tsc --noEmit   (or `npm run build`) to confirm no
+#        leftover old identifiers. Do NOT run migrations / db:seed
+#        unless the user asks (per 00-README post-conversion steps).

@@ -4,7 +4,7 @@ import Container from '@/components/ui/Container';
 import { getAboutMissionVision } from '@/lib/identity';
 
 export const metadata = {
-  title: 'Mission & Vision — Department of Mechanical Engineering',
+  title: 'Mission & Vision — Department of Electrical and Electronics Engineering',
   description:
     'The mission and vision of the Department of Mechanical Engineering, Sonargaon University.',
 };
@@ -53,7 +53,7 @@ export default async function MissionVisionPage() {
                   </h2>
                   <div className="mt-3 mb-6 h-1 w-16 bg-button-yellow rounded-full" />
 
-                  <p className="text-[15px] md:text-[16px] leading-[1.85] text-white/90 text-justify">
+                  <p className="text-[15px] md:text-[16px] leading-[1.85] text-white/90 text-justify whitespace-pre-line">
                     {row.missionBody}
                   </p>
                 </div>
@@ -81,7 +81,7 @@ export default async function MissionVisionPage() {
                   </h2>
                   <div className="mt-3 mb-6 h-1 w-16 bg-button-yellow rounded-full lg:ml-auto" />
 
-                  <p className="text-[15px] md:text-[16px] leading-[1.85] text-white/90 text-justify">
+                  <p className="text-[15px] md:text-[16px] leading-[1.85] text-white/90 text-justify whitespace-pre-line">
                     {row.visionBody}
                   </p>
                 </div>

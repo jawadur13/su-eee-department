@@ -6,7 +6,7 @@ import Container from '@/components/ui/Container';
 import { getFacultyList, getPageHero } from '@/lib/identity';
 
 export const metadata = {
-  title: 'Faculty Members — Department of Mechanical Engineering',
+  title: 'Faculty Members — Department of Electrical and Electronics Engineering',
   description:
     'Faculty members of the Department of Mechanical Engineering, Sonargaon University — Dean, Head of Department, full-time and part-time faculty.',
 };

@@ -182,12 +182,18 @@ export const changeOwnPasswordSchema = z.object({
 // Prisma enum identifiers — underscored (no hyphens allowed).
 export const FacultyType = z.enum(['leadership', 'full_time', 'part_time']);
 
-// SectionContent — string | string[] | { heading, items }[]
+// SectionContent items — plain string, or { text, url? } carrying a link.
+const sectionItemSchema = z.union([
+  z.string(),
+  z.object({ text: z.string(), url: z.string().optional() }),
+]);
+
+// SectionContent — string | SectionItem[] | { heading, items }[]
 const sectionContentSchema = z.union([
   z.string(),
-  z.array(z.string()),
+  z.array(sectionItemSchema),
   z.array(
-    z.object({ heading: z.string(), items: z.array(z.string()).default([]) }),
+    z.object({ heading: z.string(), items: z.array(sectionItemSchema).default([]) }),
   ),
 ]);
 
@@ -440,7 +446,7 @@ export const laboratoryLabCreateSchema = z.object({
 
 export const laboratoryLabUpdateSchema = laboratoryLabCreateSchema.partial();
 
-export const aboutMechaClubUpdateSchema = z.object({
+export const aboutEeeClubUpdateSchema = z.object({
   heroTitle:                z.string().min(1).max(300),
   heroOverline:             optionalNullableString,
   heroImageUrl:             z.string().min(1),
@@ -711,6 +717,7 @@ export const researchPaperCreateSchema = z.object({
   area:            z.string().min(1),
   date:            optionalNullableString,
   publicationYear: z.number().int().min(1900).max(2100).nullable().optional(),
+  links:           z.array(z.object({ label: z.string(), value: z.string() })).default([]),
 });
 
 export const researchPaperUpdateSchema = researchPaperCreateSchema;
@@ -860,9 +867,11 @@ const overviewStatSchema = z.object({
 });
 
 const feeTierSchema = z.object({
-  gpa:       z.string().min(1),
-  perCredit: z.number(),
-  total:     z.number(),
+  gpa:          z.string().min(1),
+  waiver:       z.string().optional(),
+  totalCredits: z.number().optional(),
+  perCredit:    z.number(),
+  total:        z.number(),
 });
 
 const feeGroupSchema = z.object({
@@ -1018,7 +1027,7 @@ export const contactSubmissionStatusUpdateSchema = z.object({
 // ─────────────────────────────────────────────────────────────────
 
 // Each advantage row in the NewsletterPage.advantages Json array.
-// Mirrors the AboutMechaClub.activities shape (Json structured editor)
+// Mirrors the AboutEeeClub.activities shape (Json structured editor)
 // — iconName resolves through DynamicLucideIcon at render time.
 const newsletterAdvantagesArraySchema = z.array(
   z.object({
@@ -1053,28 +1062,28 @@ export const newsletterSubscribeSchema = z.object({
 });
 
 // ─────────────────────────────────────────────────────────────────
-//  Mecha Club join application — public submit + admin status edit
+//  SUEEC join application — public submit + admin status edit
 // ─────────────────────────────────────────────────────────────────
 
-const mechaClubSemesterEnum = z.enum(['1', '2', '3', '4', '5', '6', '7', '8']);
+const eeeClubSemesterEnum = z.enum(['1', '2', '3', '4', '5', '6', '7', '8']);
 
-export const mechaClubApplicationCreateSchema = z.object({
+export const eeeClubApplicationCreateSchema = z.object({
   fullName:   z.string().trim().min(1).max(200),
   studentId:  z.string().trim().min(1).max(50),
   email:      z.string().trim().email().max(320),
   phone:      z.string().trim().min(1).max(50),
-  semester:   mechaClubSemesterEnum,
+  semester:   eeeClubSemesterEnum,
   motivation: z.string().trim().min(1).max(2000),
 });
 
-export const mechaClubApplicationStatusEnum = z.enum([
+export const eeeClubApplicationStatusEnum = z.enum([
   'pending',
   'approved',
   'rejected',
 ]);
 
-export const mechaClubApplicationStatusUpdateSchema = z.object({
-  status: mechaClubApplicationStatusEnum,
+export const eeeClubApplicationStatusUpdateSchema = z.object({
+  status: eeeClubApplicationStatusEnum,
 });
 
 // Generic page-hero update. pageKey + publicPath + pageLabel are

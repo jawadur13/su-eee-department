@@ -5,7 +5,7 @@ import { sanitizeHtml } from '@/lib/sanitize-html';
 import { DynamicLucideIcon } from '@/components/ui/DynamicLucideIcon';
 
 export const metadata = {
-  title: 'Laboratory Facility — Department of Mechanical Engineering',
+  title: 'Laboratory Facility — Department of Electrical and Electronics Engineering',
   description:
     'Hands-on laboratories of the Department of Mechanical Engineering at Sonargaon University — thermodynamics, fluid mechanics, machine shop, materials, CAD, and welding.',
 };

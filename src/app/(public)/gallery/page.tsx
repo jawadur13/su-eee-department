@@ -4,7 +4,7 @@ import GalleryGrid from '@/components/gallery/GalleryGrid';
 import { getGalleryImages, getPageHero } from '@/lib/identity';
 
 export const metadata = {
-  title: 'Gallery — Department of Mechanical Engineering',
+  title: 'Gallery — Department of Electrical and Electronics Engineering',
   description:
     'Campus life moments from the Department of Mechanical Engineering, Sonargaon University.',
 };

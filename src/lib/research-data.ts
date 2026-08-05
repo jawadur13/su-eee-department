@@ -19,7 +19,7 @@ export const researchPapers: ResearchPaper[] = [
     id: 2,
     title:
       'Application of Mathematical Modeling and Chemical Analysis for COVID-19 Pandemic in Bangladesh',
-    area: 'Department of Mechanical Engineering, Sonargaon University, Bangladesh; Department of Mathematics',
+    area: 'Department of EEE, Sonargaon University, Bangladesh; Department of Mathematics',
     date: '',
     authors: 'Md. Eaqub Ali, Md. Nurujjaman',
   },
@@ -27,7 +27,7 @@ export const researchPapers: ResearchPaper[] = [
     id: 3,
     title:
       'Measurement of Vibration and Improving the Shaft Vibration Dynamics of Gear and Belt Drive Using a Bearing-mounted System',
-    area: 'Dept. of Mechanical Engineering, Rajshahi University of Engineering and Technology; Dept. of Mechanical Engineering, Sonargaon University',
+    area: 'Dept. of Mechanical Engineering, Rajshahi University of Engineering and Technology; Dept. of EEE, Sonargaon University',
     date: 'January–February 2023',
     authors: 'Md. Sharful Insan, Mohammad Din Al Amin, Md. Emdadul Haque',
   },
@@ -44,7 +44,7 @@ export const researchPapers: ResearchPaper[] = [
     id: 5,
     title:
       'Molecular Dynamics Simulation to Evaluate Flexural Properties of Cu Nanowires Under Different Loading Conditions',
-    area: 'Department of Mechanical Engineering, BUET & Department of Mechanical Engineering, Sonargaon University',
+    area: 'Department of Mechanical Engineering, BUET & Department of EEE, Sonargaon University',
     date: 'September 2022',
     authors: 'Mohammad Din Al Amin, Mohammad Minhaz Uddin, Md Alamgir Hossain',
   },
@@ -52,7 +52,7 @@ export const researchPapers: ResearchPaper[] = [
     id: 6,
     title:
       'Performance Analysis of Biodiesel Generated Continuously by Using Newly Developed PLC Processor',
-    area: 'Department of Mechanical Engineering, Sonargaon University',
+    area: 'Department of EEE, Sonargaon University',
     date: '5 June 2022',
     authors: 'M. A. Hossain, M. M. Hossain, A. B. Rashid, Ahmed',
   },
@@ -60,7 +60,7 @@ export const researchPapers: ResearchPaper[] = [
     id: 7,
     title:
       'Augmentation of Heat Transfer in a Circular Pipe by Means of Twisted Vane Inserted',
-    area: 'Department of Mechanical Engineering, BUET & Department of Mechanical Engineering, Sonargaon University',
+    area: 'Department of Mechanical Engineering, BUET & Department of EEE, Sonargaon University',
     date: '2016',
     authors: 'Md. Shafkat Bin Hoque, Hossain Siddique, Mohammad Ali',
   },
@@ -68,7 +68,7 @@ export const researchPapers: ResearchPaper[] = [
     id: 8,
     title:
       'A Review on Renovation of Gas Turbine to Improve Efficiency by Using Compressor Water Wash',
-    area: 'Department of Mechanical Engineering, Sonargaon University',
+    area: 'Department of EEE, Sonargaon University',
     date: 'December 2017',
     authors: 'Mahbubur Rahman, Md. Mostofa Hossain',
   },
@@ -76,7 +76,7 @@ export const researchPapers: ResearchPaper[] = [
     id: 9,
     title:
       'Scenario of Safety Issues Prevailing Accident in Rural Engineering Workshop in Bangladesh',
-    area: 'Department of Mechanical Engineering, Sonargaon University; Khulna University of Engineering and Technology',
+    area: 'Department of EEE, Sonargaon University; Khulna University of Engineering and Technology',
     date: 'December 2017',
     authors: 'Mahbubur Rahman, Md. Arafat Hossain, Md. Mostofa Hossain',
   },
@@ -84,7 +84,7 @@ export const researchPapers: ResearchPaper[] = [
     id: 10,
     title:
       'Energy Storage in an Impure Paraffin Wax Embedded in the Finned-Annulus of Two Horizontal Tubes: Part I',
-    area: 'Department of Mechanical Engineering, McGill University, Canada; Department of Mechanical Engineering, Sonargaon University',
+    area: 'Department of Mechanical Engineering, McGill University, Canada; Department of EEE, Sonargaon University',
     date: 'December 2017',
     authors: 'Tonny Tabassum, Mainul Hasan, Latifa Begum',
   },
@@ -92,7 +92,7 @@ export const researchPapers: ResearchPaper[] = [
     id: 11,
     title:
       'A Comparative Study of Performance of Different Types of Barrier Constructions for Attenuating Low Frequency Sound',
-    area: 'Department of Mechanical Engineering, Sonargaon University',
+    area: 'Department of EEE, Sonargaon University',
     date: '2016',
     authors: 'Abid Hossain Khan, Md. Mostofa Hossain',
   },
@@ -100,14 +100,14 @@ export const researchPapers: ResearchPaper[] = [
     id: 12,
     title:
       'Improvement of Conventional Electric Heater to Reduce Energy Loss and its Performance Test',
-    area: 'Department of Mechanical Engineering, Sonargaon University',
+    area: 'Department of EEE, Sonargaon University',
     date: '2016',
     authors: 'Angkush Kumar Ghosh, Md. Mostofa Hossain',
   },
   {
     id: 13,
     title: 'Effect of Moving Surface on Aerodynamic Characteristics in NACA0012 Airfoil',
-    area: 'Department of Mechanical Engineering, BUET; Department of Mechanical Engineering, Sonargaon University',
+    area: 'Department of Mechanical Engineering, BUET; Department of EEE, Sonargaon University',
     date: '',
     authors: 'Md. Sadiqul Islam, Shaik Merkatul Hakim, Mohammad Ali',
   },
@@ -130,7 +130,7 @@ export const researchPapers: ResearchPaper[] = [
     id: 16,
     title:
       'Analysis of Extracted Bio-Fuel from Plastic based Solid Medical Waste through Pyrolysis',
-    area: 'Department of Mechanical Engineering, Sonargaon University; Khulna University of Engineering & Technology',
+    area: 'Department of EEE, Sonargaon University; Khulna University of Engineering & Technology',
     date: 'July 2020',
     authors: 'Saikat Biswas, Md. Sojib Kaisar, Md. Asibul Islam',
   },
