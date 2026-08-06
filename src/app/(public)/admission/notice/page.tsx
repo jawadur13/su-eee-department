@@ -1,8 +1,9 @@
-import { Calendar, FileText, Hash, Download, Building2 } from 'lucide-react';
+import { Calendar, FileText, Hash, Download, ExternalLink, Building2 } from 'lucide-react';
 import PageShell from '@/components/layout/PageShell';
 import Container from '@/components/ui/Container';
 import { getActiveAdmissionNotice, getPageHero } from '@/lib/identity';
 import { sanitizeHtml } from '@/lib/sanitize-html';
+import { withAttachmentDownload } from '@/lib/pdf-helpers';
 
 export const metadata = {
   title: 'Admission Notice — Department of Electrical and Electronics Engineering',
@@ -143,19 +144,30 @@ export default async function AdmissionNoticePage() {
                       Official Notice Document
                     </h4>
                     <p className="text-sm text-gray-600">
-                      Download the original signed notice as a PDF.
+                      View or download the original signed notice.
                     </p>
                   </div>
                 </div>
 
-                <a
-                  href={notice.fileUrl}
-                  download={notice.fileName ?? undefined}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-md shadow-md hover:shadow-lg hover:brightness-110 transition-all whitespace-nowrap"
-                >
-                  <Download size={18} />
-                  Download Notice (PDF)
-                </a>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <a
+                    href={notice.fileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-md shadow-md hover:shadow-lg hover:brightness-110 transition-all whitespace-nowrap"
+                  >
+                    <ExternalLink size={18} />
+                    View Notice
+                  </a>
+                  <a
+                    href={withAttachmentDownload(notice.fileUrl)}
+                    download={notice.fileName ?? undefined}
+                    className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-md shadow-sm transition-all whitespace-nowrap"
+                  >
+                    <Download size={18} />
+                    Download
+                  </a>
+                </div>
               </div>
             )}
           </>

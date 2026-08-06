@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { Download } from 'lucide-react';
+import { Download, ExternalLink } from 'lucide-react';
+import { withAttachmentDownload } from '@/lib/pdf-helpers';
 
 export interface DepartmentLayoutItem {
   slug: string;
@@ -34,10 +35,25 @@ export default function DepartmentLayoutClient({ items }: { items: DepartmentLay
               {item.shortTitle}
             </h3>
             {item.pdf ? (
-              <a href={item.pdf} download className="mt-4 inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-md transition-colors">
-                <Download size={16} />
-                Download
-              </a>
+              <div className="mt-4 flex flex-col gap-2.5">
+                <a
+                  href={item.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-md transition-colors"
+                >
+                  <ExternalLink size={16} />
+                  View Layout
+                </a>
+                <a
+                  href={withAttachmentDownload(item.pdf)}
+                  download
+                  className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white text-sm font-semibold rounded-md transition-colors"
+                >
+                  <Download size={16} />
+                  Download
+                </a>
+              </div>
             ) : (
               <span className="mt-4 inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-gray-100 text-gray-400 text-sm font-semibold rounded-md cursor-not-allowed">
                 PDF coming soon

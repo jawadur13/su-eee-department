@@ -133,3 +133,4 @@ export async function deleteAsset(publicId: string) {
   ensureConfigured();
   return cloudinary.uploader.destroy(publicId, { invalidate: true });
 }
+

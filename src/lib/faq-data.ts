@@ -13,13 +13,6 @@ export interface FAQ {
 }
 
 export const faqs: FAQ[] = [
-  // ───── General Admission & Eligibility ─────
-  {
-    id: 1,
-    category: 'Admission',
-    question: 'Is the LL.B (2-year) program available? What is the cost?',
-    answer: 'We apologize, but our 2-year LLM/LL.B programs are currently closed.',
-  },
   {
     id: 2,
     category: 'Admission',
@@ -44,7 +37,7 @@ export const faqs: FAQ[] = [
     category: 'Admission',
     question: 'Can I get admitted if my GPA is less than 2.50?',
     answer:
-      'Yes, but only for the Fashion Design program, provided you have at least a GPA of 2.00 in both SSC and HSC.',
+      'No, you cannot get admitted to the EEE program with a GPA below 2.50. However, you may qualify for other programs such as Fashion Design, provided you have at least a GPA of 2.00 in both SSC and HSC.',
   },
   {
     id: 6,
@@ -92,25 +85,6 @@ export const faqs: FAQ[] = [
     question: 'Does the university have IEB membership?',
     answer: 'Currently, we do not have it, but the process is underway.',
   },
-  {
-    id: 13,
-    category: 'Rankings',
-    question: 'Does the university have Bar Council approval?',
-    answer: 'Yes, we have Bar Council approval.',
-  },
-  {
-    id: 14,
-    category: 'Rankings',
-    question: 'Can I sit for the Bar Council Exam after finishing LL.B?',
-    answer: 'Yes, you are eligible for the Bar Council Exam.',
-  },
-  {
-    id: 15,
-    category: 'Rankings',
-    question: 'Is there an age limit for the Bar Council Exam?',
-    answer: 'No, there is no age limit for the Bar Council Enrollment Exam.',
-  },
-
   // ───── Campus & Facilities ─────
   {
     id: 16,
@@ -149,41 +123,62 @@ export const faqs: FAQ[] = [
     question: 'Does the university provide job or career support?',
     answer: 'We are not providing job placement facilities at this moment.',
   },
+  {
+    id: 22,
+    category: 'Campus',
+    question: 'What laboratory facilities does the EEE department have?',
+    answer:
+      'The EEE department has four specialized labs: Electrical Circuit Lab, Power System Protection & Communication Lab, Energy Conversion Lab, and Electronic Lab. They are equipped with oscilloscopes, function generators, motor/generator sets, and communication trainers for hands-on training in circuit analysis, power systems, and electronics.',
+  },
+  {
+    id: 23,
+    category: 'Campus',
+    question: 'Does the EEE department have a student club or IEEE chapter?',
+    answer:
+      'Yes \u2014 the SU Electrical and Electronic Club (SUEEC), founded in 2024 with 100+ members. SUEEC organizes robotics workshops, industrial visits, tech talks, and project exhibitions. The department is also working toward establishing an IEEE student branch.',
+  },
 
   // ───── Programs & Academic System ─────
   {
-    id: 22,
+    id: 24,
     category: 'Programs',
     question: 'Are there English or Pharmacy subjects available?',
     answer: 'No, we do not offer English or Pharmacy programs.',
   },
   {
-    id: 23,
+    id: 25,
     category: 'Programs',
     question: 'Is there an MSc program?',
     answer: 'No, we do not offer MSc programs currently.',
   },
   {
-    id: 24,
+    id: 26,
     category: 'Programs',
     question: 'Are there any short or certificate courses?',
     answer:
-      'No, we do not have short courses. Programs for HSC students are 4 years, and for Diploma students, they are 3 years and 8 months.',
+      'No, we do not have short courses at this time.',
   },
   {
-    id: 25,
+    id: 27,
+    category: 'Programs',
+    question: "What\u2019s the BSc in EEE program duration?",
+    answer:
+      'The B.Sc. in EEE is a 4-year program (161 credits, 8 semesters) for HSC-background students under a tri-semester system. Diploma holders follow a reduced 144-credit structure, completing in approximately 3.5 years.',
+  },
+  {
+    id: 28,
     category: 'Programs',
     question: 'Is the medium of instruction Bengali or English?',
     answer: 'All programs except Bengali-related subjects are conducted in English.',
   },
   {
-    id: 26,
+    id: 29,
     category: 'Programs',
     question: 'Do you follow an Open Credit system?',
     answer: 'No, we follow a Fixed Credit system.',
   },
   {
-    id: 27,
+    id: 30,
     category: 'Programs',
     question: 'Can I go abroad via credit transfer?',
     answer:
@@ -192,44 +187,37 @@ export const faqs: FAQ[] = [
 
   // ───── Classes & Exams ─────
   {
-    id: 28,
+    id: 31,
     category: 'Exams',
     question: 'Is there an option for online classes or exams?',
     answer:
       'No, we do not have online batches. However, we offer Friday/Weekend batches for those with busy schedules.',
   },
   {
-    id: 29,
+    id: 32,
     category: 'Exams',
     question: 'Can I take exams without attending classes?',
     answer: 'No, a minimum of 50-60% class attendance is required to sit for exams.',
   },
   {
-    id: 30,
+    id: 33,
     category: 'Exams',
     question: 'Will irregular attendance affect my results?',
     answer:
       "It won't cause major issues, but you will lose the marks allocated for class attendance.",
   },
   {
-    id: 31,
+    id: 34,
     category: 'Exams',
     question: 'Is the certificate the same for Evening and Friday batches?',
     answer: 'Yes, there is no difference in the certificates.',
   },
   {
-    id: 32,
+    id: 35,
     category: 'Exams',
     question: 'Why do costs vary between different batches?',
     answer:
       'Class schedules and timings vary. Costs are adjusted based on the requirements for managing faculty and staff resources for specific batch timings.',
-  },
-  {
-    id: 33,
-    category: 'Exams',
-    question: 'Can I get admitted to LL.B by only paying the admission fee?',
-    answer:
-      'Yes, you can complete the admission process by paying only the initial admission fee.',
   },
 ];
 

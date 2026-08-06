@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
-import { Search, Download } from 'lucide-react';
+import { Search, Download, ExternalLink } from 'lucide-react';
+import { withAttachmentDownload } from '@/lib/pdf-helpers';
 
 type Level = 'Undergraduate' | 'Postgraduate';
 
@@ -140,14 +141,25 @@ export default function ProspectusClient({ items }: { items: ProspectusItem[] })
                 <p className="text-sm text-gray-600 mb-5">{p.department}</p>
 
                 {p.pdf ? (
-                  <a
-                    href={p.pdf}
-                    download
-                    className="mt-auto inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-md transition-colors"
-                  >
-                    <Download size={16} />
-                    Download
-                  </a>
+                  <div className="mt-auto flex flex-col gap-2.5">
+                    <a
+                      href={p.pdf}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-primary hover:bg-primary/90 text-white text-sm font-semibold rounded-md transition-colors"
+                    >
+                      <ExternalLink size={16} />
+                      View Prospectus
+                    </a>
+                    <a
+                      href={withAttachmentDownload(p.pdf)}
+                      download
+                      className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white text-sm font-semibold rounded-md transition-colors"
+                    >
+                      <Download size={16} />
+                      Download
+                    </a>
+                  </div>
                 ) : (
                   <span className="mt-auto inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-gray-100 text-gray-400 text-sm font-semibold rounded-md cursor-not-allowed">
                     PDF coming soon
