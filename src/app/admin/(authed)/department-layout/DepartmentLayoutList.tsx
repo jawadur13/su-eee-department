@@ -11,7 +11,7 @@ import FormSortableList from '@/components/admin/FormSortableList';
 
 type Row = { id: string; slug: string; shortTitle: string };
 
-export default function DepartmentLayoutList({ rows: initialRows }: { rows: readonly Row[] }) {
+export default function DepartmentLayoutList({ rows: initialRows }: { rows: Row[] }) {
   const router = useRouter();
   const confirm = useConfirm();
   const [rows, setRows] = useState(initialRows);
