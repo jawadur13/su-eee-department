@@ -82,6 +82,7 @@ const ABOUT_PAGES_NAV: NavItem[] = [
   { href: '/admin/about-overview',        label: 'Overview',         icon: Info },
   { href: '/admin/about-mission-vision',  label: 'Mission & Vision', icon: Info },
   { href: '/admin/about-eee-club',      label: 'SUEEC',       icon: Info },
+  { href: '/admin/department-layout',  label: 'Department Layout', icon: MapIcon },
 ];
 
 const LAB_SYSTEMS_NAV: NavItem[] = [

@@ -499,3 +499,7 @@ export const getJourneyCTAContent = cache(async () => {
 export const getLegalPagesContent = cache(async () => {
   return prisma.legalPagesContent.findUnique({ where: { id: 'singleton' } });
 });
+
+export const getDepartmentLayouts = cache(async () => {
+  return prisma.departmentLayout.findMany({ orderBy: { displayOrder: 'asc' } });
+});

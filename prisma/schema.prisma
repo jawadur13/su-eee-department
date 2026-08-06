@@ -512,6 +512,24 @@ model AboutEeeClub {
   @@map("about_eee_club")
 }
 
+model DepartmentLayout {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title         String
+  shortTitle    String
+  coverUrl      String
+  coverPublicId String?
+  pdfUrl        String?
+  pdfPublicId   String?
+  pdfFileName   String?
+  displayOrder  Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([displayOrder])
+  @@map("department_layout")
+}
+
 // ════════════════════════════════════════════════════════════════
 //  LAB SYSTEMS  (Phase 5)
 //    Two parallel multi-row systems — intentional separation, not
