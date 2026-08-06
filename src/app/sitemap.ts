@@ -31,6 +31,7 @@ const staticRoutes: { path: string; priority: number; changeFrequency: 'weekly' 
   { path: '/research', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/contact', priority: 0.7, changeFrequency: 'yearly' },
   { path: '/transport-service', priority: 0.6, changeFrequency: 'yearly' },
+  { path: '/programs/bsc-eee', priority: 0.8, changeFrequency: 'monthly' },
 ];
 
 // Sitemap is a server function — Phase 7 cuts the stale faculty-data
