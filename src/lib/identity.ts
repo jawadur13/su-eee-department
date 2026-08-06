@@ -431,6 +431,20 @@ export const getProgramFeeStructures = cache(async () => {
   });
 });
 
+export const getProgramBySlug = cache(async (slug: string) => {
+  return prisma.program.findFirst();
+});
+
+export const getProgramFeeStructureBySlug = cache(async (slug: string) => {
+  const program = await prisma.program.findFirst({
+    select: { id: true },
+  });
+  if (!program) return null;
+  return prisma.programFeeStructure.findUnique({
+    where: { programId: program.id },
+  });
+});
+
 // ─────────────────────────────────────────────────────────────────
 //  Admission CMS Part 3 — Phase 8c
 //    /admission/transfer-credits reads the singleton.

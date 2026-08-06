@@ -341,7 +341,7 @@ function GroupCard({
   onRemove: () => void;
   onAddTier: () => void;
   onRemoveTier: (tierId: string) => void;
-  onUpdateTier: (tierId: string, field: 'gpa' | 'perCredit' | 'total', val: string) => void;
+  onUpdateTier: (tierId: string, field: 'gpa' | 'waiver' | 'totalCredits' | 'perCredit' | 'total', val: string) => void;
   onReorderTiers: (orderedIds: string[]) => void;
 }) {
   return (
