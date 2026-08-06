@@ -61,6 +61,8 @@ const KIND_TO_SUBFOLDER: Record<string, string> = {
   'admission-notice-file': 'admission/notices',
   'prospectus-cover':      'admission/prospectus/covers',
   'prospectus-pdf':        'admission/prospectus/pdfs',
+  'department-layout-cover': 'about/department-layout/covers',
+  'department-layout-pdf':   'about/department-layout/pdfs',
   // Phase 10 — contact page hero image.
   'contact-hero':          'contact/hero',
   // Phase 12 — journey CTA hero image (between content + footer chrome).

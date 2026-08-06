@@ -12,6 +12,7 @@ const staticRoutes: { path: string; priority: number; changeFrequency: 'weekly' 
   { path: '/about/laboratory-facility', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/about/lab-facility', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/about/eee-club', priority: 0.7, changeFrequency: 'monthly' },
+  { path: '/about/department-layout', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/admission/requirements', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/admission/tuition-fees', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/admission/transfer-credits', priority: 0.7, changeFrequency: 'yearly' },

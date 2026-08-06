@@ -291,6 +291,8 @@ export const uploadKindSchema = z.enum([
   'journey-cta-hero',
   // Phase 17
   'legal-hero',
+  'department-layout-cover',
+  'department-layout-pdf',
 ]);
 
 export const uploadSignSchema = z.object({
@@ -834,6 +836,19 @@ export const prospectusEntryCreateSchema = z.object({
 });
 
 export const prospectusEntryUpdateSchema = prospectusEntryCreateSchema;
+
+export const departmentLayoutCreateSchema = z.object({
+  slug:          z.string().min(1).max(160).regex(slugRegexHub, 'Slug must be lowercase letters, numbers, and hyphens only'),
+  title:         z.string().min(1).max(500),
+  shortTitle:    z.string().min(1).max(300),
+  coverUrl:      z.string().min(1),
+  coverPublicId: optionalNullableString,
+  pdfUrl:        optionalNullableString,
+  pdfPublicId:   optionalNullableString,
+  pdfFileName:   optionalNullableString,
+});
+
+export const departmentLayoutUpdateSchema = departmentLayoutCreateSchema;
 
 // ─────────────────────────────────────────────────────────────────
 //  Phase 8b — Admission CMS Part 2 (Requirements + Tuition Fees)
