@@ -6,7 +6,7 @@ import { getGalleryImages, getPageHero } from '@/lib/identity';
 export const metadata = {
   title: 'Gallery — Department of Electrical and Electronics Engineering',
   description:
-    'Campus life moments from the Department of Mechanical Engineering, Sonargaon University.',
+    'Campus life moments from the Department of Electrical and Electronics Engineering, Sonargaon University.',
 };
 
 export default async function GalleryPage() {

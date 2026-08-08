@@ -41,13 +41,13 @@ export const quickLinks: { name: string; href: string; external?: boolean; disab
 ];
 
 export const researchAreas = [
-  { name: 'Thermodynamics & Heat Transfer', icon: 'Flame' },
-  { name: 'Fluid Mechanics & CFD', icon: 'Waves' },
-  { name: 'Robotics & Automation', icon: 'Bot' },
-  { name: 'Manufacturing & Production', icon: 'Wrench' },
-  { name: 'Materials Science & Engineering', icon: 'Layers' },
-  { name: 'Renewable Energy Systems', icon: 'Leaf' },
-  { name: 'Automotive Engineering', icon: 'Car' }
+  { name: 'Power Systems & Energy Conversion', icon: 'Flame' },
+  { name: 'Signal Processing & Communications', icon: 'Waves' },
+  { name: 'Control Systems & Robotics', icon: 'Bot' },
+  { name: 'VLSI & Embedded Systems', icon: 'Wrench' },
+  { name: 'Semiconductor & Materials', icon: 'Layers' },
+  { name: 'Renewable & Smart Grid', icon: 'Leaf' },
+  { name: 'IoT & Wireless Systems', icon: 'Car' }
 ];
 
 export const campusServices: { name: string; description: string; image: string; href?: string }[] = [

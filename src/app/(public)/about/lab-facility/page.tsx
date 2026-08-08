@@ -7,7 +7,7 @@ import LabFacilityClient from './LabFacilityClient';
 export const metadata = {
   title: 'Lab Facilities — Department of Electrical and Electronics Engineering',
   description:
-    'Departmental laboratories at Sonargaon University ME — manufacturing, ICE, applied mechanics, fluid mechanics, CFD, material testing, and more.',
+    'Departmental laboratories at Sonargaon University EEE — circuits, electronics, power systems, digital logic, communications, control, and embedded systems.',
 };
 
 export default async function LabFacilityPage() {

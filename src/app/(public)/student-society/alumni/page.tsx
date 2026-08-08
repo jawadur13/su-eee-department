@@ -7,7 +7,7 @@ import { getAlumni, getPageHero } from '@/lib/identity';
 export const metadata = {
   title: 'Alumni — Department of Electrical and Electronics Engineering',
   description:
-    'Notable alumni from the Department of Mechanical Engineering, Sonargaon University.',
+    'Notable alumni from the Department of Electrical and Electronics Engineering, Sonargaon University.',
 };
 
 export default async function AlumniPage() {

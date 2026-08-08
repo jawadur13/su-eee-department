@@ -6,7 +6,7 @@ import { sanitizeHtml } from '@/lib/sanitize-html';
 export const metadata = {
   title: 'Overview — Department of Electrical and Electronics Engineering',
   description:
-    'Overview of the Department of Mechanical Engineering — programs, vision, and the scope of mechanical engineering as a discipline and a career.',
+    'Overview of the Department of Electrical and Electronics Engineering — programs, vision, and the scope of electrical and electronics engineering as a discipline and a career.',
 };
 
 export default async function OverviewPage() {

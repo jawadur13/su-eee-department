@@ -7,7 +7,7 @@ import { DynamicLucideIcon } from '@/components/ui/DynamicLucideIcon';
 export const metadata = {
   title: 'Laboratory Facility — Department of Electrical and Electronics Engineering',
   description:
-    'Hands-on laboratories of the Department of Mechanical Engineering at Sonargaon University — thermodynamics, fluid mechanics, machine shop, materials, CAD, and welding.',
+    'Hands-on laboratories of the Department of Electrical and Electronics Engineering at Sonargaon University — circuits, electronics, power systems, digital logic, communications, control, and embedded systems.',
 };
 
 // Phase 20 — lab.iconName + feature.iconName both resolve via

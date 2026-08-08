@@ -9,7 +9,7 @@ import { sanitizeHtml } from '@/lib/sanitize-html';
 export const metadata = {
   title: 'News — Department of Electrical and Electronics Engineering',
   description:
-    'Latest news from the Department of Mechanical Engineering, Sonargaon University — events, workshops, industrial visits, and academic milestones.',
+    'Latest news from the Department of Electrical and Electronics Engineering, Sonargaon University — events, workshops, industrial visits, and academic milestones.',
 };
 
 const FALLBACK_HERO_IMAGE = '/assets/site-school-1024x576.webp';
