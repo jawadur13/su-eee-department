@@ -53,8 +53,8 @@ export default function OverviewSection() {
             <Image
               src="/assets/homeimg.webp"
               alt="Sonargaon University Electrical and Electronics Engineering students engaged in laboratory work"
-              width={1600}
-              height={900}
+              width={1456}
+              height={1080}
               sizes="(min-width: 1024px) 540px, 100vw"
               className="h-auto w-full object-cover lg:h-[294px]"
             />
