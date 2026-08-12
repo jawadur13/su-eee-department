@@ -48,7 +48,7 @@ export async function deleteServiceCharter(id: string) {
 
 export async function reorderServiceCharters(ids: string[]) {
   const updates = ids.map((id, idx) =>
-    db.serviceCharter.update({
+    prisma.serviceCharter.update({
       where: { id },
       data: { displayOrder: idx },
     })
