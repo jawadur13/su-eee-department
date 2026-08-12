@@ -1173,3 +1173,39 @@ export const journeyCTAContentUpdateSchema = z.object({
   secondaryCtaHref:     z.string().min(1).max(500),
   secondaryCtaExternal: z.boolean().optional().default(false),
 });
+
+// ─────────────────────────────────────────────────────────────────
+//  ServiceCharter (list — CRUD + reorder)
+// ─────────────────────────────────────────────────────────────────
+
+const serviceStepSchema = z.object({
+  text:       z.string().min(1),
+  linkLabel:  z.string().nullable().optional(),
+  linkHref:   z.string().nullable().optional(),
+});
+
+const serviceItemSchema = z.object({
+  title:         z.string().min(1),
+  scope:         z.enum(['department', 'university']).default('department'),
+  steps:         z.array(serviceStepSchema).default([]),
+  contactName:   z.string().nullable().optional(),
+  contactRole:   z.string().nullable().optional(),
+  contactPhone:  z.string().nullable().optional(),
+  contactEmail:  z.string().email().nullable().optional(),
+  contactRoom:   z.string().nullable().optional(),
+});
+
+export const serviceCharterCreateSchema = z.object({
+  slug:          z.string().min(1).max(160).regex(slugRegex, 'Slug must be lowercase letters, numbers, and hyphens only'),
+  title:         z.string().min(1).max(300),
+  shortTitle:    z.string().min(1).max(200),
+  department:    z.string().min(1).max(200),
+  coverUrl:      optionalNullableString,
+  coverPublicId: optionalNullableString,
+  pdfUrl:        optionalNullableString,
+  pdfPublicId:   optionalNullableString,
+  serviceItems:  z.array(serviceItemSchema).default([]),
+  displayOrder:  z.number().int().min(0).optional(),
+});
+
+export const serviceCharterUpdateSchema = serviceCharterCreateSchema.partial();

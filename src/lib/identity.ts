@@ -386,6 +386,14 @@ export const getSyllabi = cache(async () => {
   return prisma.syllabus.findMany({ orderBy: { displayOrder: 'asc' } });
 });
 
+export const getServiceCharters = cache(async () => {
+  return prisma.serviceCharter.findMany({ orderBy: { displayOrder: 'asc' } });
+});
+
+export const getServiceCharterBySlug = cache(async (slug: string) => {
+  return prisma.serviceCharter.findUnique({ where: { slug } });
+});
+
 export const getTransportLanding = cache(async () => {
   return prisma.transportLanding.findUnique({ where: { id: 'singleton' } });
 });

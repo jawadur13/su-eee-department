@@ -1457,3 +1457,41 @@ model NewsletterSubscriber {
   @@index([status, createdAt])
   @@map("newsletter_subscriber")
 }
+
+// ─────────────────────────────────────────────────────────────────
+//  Service Charter — Student Society Service Directory
+//    Editable via admin CMS. serviceItems are stored as JSON array
+//    for flexible structure. Each service item has process flow steps
+//    and contact person details.
+// ─────────────────────────────────────────────────────────────────
+
+model ServiceCharter {
+  id                String   @id @default(cuid())
+  slug              String   @unique
+  title             String   // "Service Charter"
+  shortTitle        String   // e.g., "EEE Service Charter"
+  department        String   // e.g., "Electrical and Electronics Engineering"
+
+  // Cover image for charter document cards
+  coverUrl          String?
+  coverPublicId     String?
+
+  // Downloadable PDF of the charter
+  pdfUrl            String?
+  pdfPublicId       String?
+
+  // Service items with process flows and contacts
+  // Schema: [{
+  //   title, scope ('department' | 'university'),
+  //   steps: [{text, linkLabel?, linkHref?}],
+  //   contactName?, contactRole?, contactPhone?, contactEmail?, contactRoom?
+  // }]
+  serviceItems      Json     @default("[]")
+
+  displayOrder      Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([displayOrder])
+  @@map("service_charter")
+}
