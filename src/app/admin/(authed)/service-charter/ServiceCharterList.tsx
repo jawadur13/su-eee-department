@@ -16,8 +16,8 @@ export default function ServiceCharterList({ items: initialItems }: { items: Ite
   async function onDelete(id: string, title: string) {
     const ok = await confirm({
       title: 'Delete charter?',
-      description: `Delete "${title}"? This cannot be undone.`,
-      dangerousActionLabel: 'Delete',
+      message: `Delete "${title}"? This cannot be undone.`,
+      confirmLabel: 'Delete',
     });
     if (!ok) return;
 
