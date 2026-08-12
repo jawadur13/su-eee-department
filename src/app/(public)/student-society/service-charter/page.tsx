@@ -30,8 +30,8 @@ export default async function ServiceCharterPage() {
       title={hero?.heroTitle ?? 'Service Charter'}
       subtitle={hero?.heroSubtitle ?? undefined}
       overline={hero?.heroOverline ?? 'Student Society'}
-      image={hero?.heroImageUrl ?? '/assets/service-charter-hero.webp'}
-      imagePosition={hero ? `center ${hero.heroImageVerticalPercent}%` : 'top'}
+      image={hero?.heroImageUrl ?? 'https://res.cloudinary.com/csrrzxip/image/upload/v1786532227/sonargaon-eee/service-charter-banner.jpg'}
+      imagePosition={hero ? `center ${hero.heroImageVerticalPercent}%` : 'center 50%'}
       contentClassName="bg-gray-50 py-12 md:py-20"
     >
       <Container>
