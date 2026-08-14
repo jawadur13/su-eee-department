@@ -6,14 +6,20 @@ export async function GET() {
     const programs = await prisma.program.findMany({
       select: {
         id: true,
-        name: true,
+        programName: true,
       },
       orderBy: {
         displayOrder: 'asc',
       },
     });
 
-    return NextResponse.json(programs);
+    // Transform to { id, name } for consistency
+    const transformed = programs.map(p => ({
+      id: p.id,
+      name: p.programName,
+    }));
+
+    return NextResponse.json(transformed);
   } catch (error) {
     console.error('Error fetching programs:', error);
     return NextResponse.json(
