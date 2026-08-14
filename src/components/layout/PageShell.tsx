@@ -13,11 +13,44 @@ const slugToTitle = (slug: string) =>
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ');
 
+const breadcrumbMap: Record<string, string> = {
+  'student-society': 'Student Society',
+  'faculty-member': 'Faculty Members',
+  'department-layout': 'Department Layout',
+  'admission': 'Admission',
+  'lab-facility': 'Lab Facility',
+  'laboratory-facility': 'Laboratory Facility',
+  'about': 'About',
+  'news': 'News',
+  'events': 'Events',
+  'alumni': 'Alumni',
+  'clubs': 'Clubs',
+  'faqs': 'FAQs',
+  'visitors': 'Visitors',
+  'syllabus': 'Syllabus',
+  'research-papers': 'Research Papers',
+  'service-charter': 'Service Charter',
+  'notice-board': 'Notice Board',
+  'gallery': 'Gallery',
+  'research': 'Research',
+  'newsletter': 'Newsletter',
+  'contact': 'Contact',
+  'programs': 'Programs',
+  'transport-service': 'Transport Service',
+  'privacy-policy': 'Privacy Policy',
+  'terms-and-conditions': 'Terms & Conditions',
+  'waiver-scholarship': 'Waiver & Scholarship',
+};
+
+type BreadcrumbItem = { label: string; href?: string };
+
 interface PageShellProps {
   title: string;
   subtitle?: string;
   /** Small overline tag above the title. Defaults to the parent URL segment, or "Department of". */
   overline?: string;
+  /** Custom breadcrumb items. If provided, replaces auto-generated breadcrumbs. */
+  breadcrumbs?: BreadcrumbItem[];
   children: ReactNode;
   /** Background image for the hero. Defaults to the campus shot. */
   image?: string;
@@ -31,6 +64,7 @@ export default function PageShell({
   title,
   subtitle,
   overline,
+  breadcrumbs: customBreadcrumbs,
   children,
   image = '/assets/site-school-1024x576.webp',
   imagePosition = 'center',
@@ -39,7 +73,26 @@ export default function PageShell({
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
   const computedOverline =
-    overline ?? (segments.length > 1 ? slugToTitle(segments[0]) : 'Department of');
+    overline ?? (segments.length > 1 ? breadcrumbMap[segments[0]] || slugToTitle(segments[0]) : 'Department of');
+
+  // Build breadcrumbs: either custom or auto-generated
+  const breadcrumbs = customBreadcrumbs || (() => {
+    const items: BreadcrumbItem[] = [];
+    let path = '';
+
+    for (let i = 0; i < segments.length; i++) {
+      const seg = segments[i];
+      path += '/' + seg;
+      const isLast = i === segments.length - 1;
+
+      items.push({
+        label: breadcrumbMap[seg] || slugToTitle(seg),
+        href: isLast ? undefined : path,
+      });
+    }
+
+    return items;
+  })();
 
   return (
     <>
@@ -118,7 +171,7 @@ export default function PageShell({
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.9 }}
-              className="flex items-center justify-center gap-2 text-white/90 text-xs md:text-[13px] font-medium tracking-wide"
+              className="flex items-center justify-center gap-2 text-white/90 text-xs md:text-[13px] font-medium tracking-wide flex-wrap"
             >
               <a
                 href="/"
@@ -126,19 +179,16 @@ export default function PageShell({
               >
                 <Home size={13} /> Home
               </a>
-              {segments.map((seg, idx) => {
-                const href = '/' + segments.slice(0, idx + 1).join('/');
-                const isLast = idx === segments.length - 1;
+              {breadcrumbs.map((item, idx) => {
+                const isLast = idx === breadcrumbs.length - 1;
                 return (
-                  <span key={href} className="inline-flex items-center gap-2">
+                  <span key={item.label} className="inline-flex items-center gap-2">
                     <ChevronRight size={13} className="opacity-50" />
                     {isLast ? (
-                      <span className="text-button-yellow font-semibold">
-                        {slugToTitle(seg)}
-                      </span>
+                      <span className="text-button-yellow font-semibold">{item.label}</span>
                     ) : (
-                      <a href={href} className="hover:text-button-yellow transition-colors">
-                        {slugToTitle(seg)}
+                      <a href={item.href} className="hover:text-button-yellow transition-colors">
+                        {item.label}
                       </a>
                     )}
                   </span>

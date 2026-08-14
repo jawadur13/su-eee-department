@@ -144,6 +144,10 @@ export default async function FacultyDetailPage({
       image={hero?.heroImageUrl}
       imagePosition={hero ? `center ${hero.heroImageVerticalPercent}%` : undefined}
       contentClassName="bg-gray-50 py-12 md:py-20"
+      breadcrumbs={[
+        { label: 'Faculty Members', href: '/faculty-member' },
+        { label: member.name },
+      ]}
     >
       <Container>
         {/* Profile header card */}
