@@ -167,7 +167,7 @@ export default function LeadPopup() {
             >
               <option value="">{settings.programPlaceholder}</option>
               {Array.isArray(programs) && programs.map(program => (
-                <option key={program.slug} value={program.slug}>
+                <option key={program.id} value={program.id}>
                   {program.name}
                 </option>
               ))}

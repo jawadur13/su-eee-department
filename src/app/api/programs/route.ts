@@ -5,7 +5,7 @@ export async function GET() {
   try {
     const programs = await prisma.program.findMany({
       select: {
-        slug: true,
+        id: true,
         name: true,
       },
       orderBy: {
