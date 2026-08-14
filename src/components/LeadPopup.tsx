@@ -21,7 +21,7 @@ interface LeadPopupSettings {
 }
 
 interface Program {
-  slug: string;
+  id: string;
   name: string;
 }
 
