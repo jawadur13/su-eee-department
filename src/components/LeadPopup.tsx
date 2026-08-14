@@ -166,7 +166,7 @@ export default function LeadPopup() {
               required
             >
               <option value="">{settings.programPlaceholder}</option>
-              {programs.map(program => (
+              {Array.isArray(programs) && programs.map(program => (
                 <option key={program.slug} value={program.slug}>
                   {program.name}
                 </option>
