@@ -95,7 +95,7 @@ export default function MajorResearchSection({ areas }: MajorResearchSectionProp
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="lg:w-1/3 relative rounded-2xl md:rounded-[32px] overflow-hidden group shadow-2xl min-h-[360px] md:min-h-[480px] lg:min-h-0"
+              className="lg:w-1/3 relative rounded-2xl md:rounded-[32px] overflow-hidden group shadow-2xl min-h-[360px] md:min-h-[420px] lg:min-h-[420px]"
             >
               <Image
                 src={featured.featuredImageUrl ?? DEFAULT_FEATURED_IMAGE}
