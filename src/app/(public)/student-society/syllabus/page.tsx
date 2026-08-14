@@ -39,8 +39,12 @@ export default async function SyllabusPage() {
             department: s.department,
             level:      s.level,
             coverUrl:   s.coverUrl,
-            pdfUrl:     s.pdfUrl,
+            // Withheld when disabled — otherwise the URL would still be
+            // serialized into the client payload and readable via view-source,
+            // which would make the toggle cosmetic rather than a real gate.
+            pdfUrl:     s.isEnabled ? s.pdfUrl : null,
             summary:    s.summary,
+            isEnabled:  s.isEnabled,
           }))}
         />
       </Container>

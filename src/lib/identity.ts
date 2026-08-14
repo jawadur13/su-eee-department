@@ -382,11 +382,11 @@ export const getBusRoutes = cache(async () => {
   return prisma.busRoute.findMany({ orderBy: { displayOrder: 'asc' } });
 });
 
+// Returns every syllabus, enabled or not. `isEnabled` gates the PDF
+// actions on the public card (see SyllabusClient), not the card itself
+// — a disabled row still lists so visitors know the syllabus exists.
 export const getSyllabi = cache(async () => {
-  return prisma.syllabus.findMany({
-    where: { isEnabled: true },
-    orderBy: { displayOrder: 'asc' },
-  });
+  return prisma.syllabus.findMany({ orderBy: { displayOrder: 'asc' } });
 });
 
 export const getServiceCharters = cache(async () => {

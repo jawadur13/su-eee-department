@@ -63,9 +63,9 @@ export default function SyllabusList({ items: initialItems }: { items: Syllabus[
                   {s.level}
                 </span>
                 {s.pdfUrl && <FileText size={14} className="text-accent" />}
-                <span className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${s.isEnabled ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>
+                <span className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${s.isEnabled ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
                   {s.isEnabled ? <Eye size={12} /> : <EyeOff size={12} />}
-                  {s.isEnabled ? 'Published' : 'Draft'}
+                  {s.isEnabled ? 'PDF available' : 'PDF disabled'}
                 </span>
               </div>
               <div className="font-medium text-gray-900 text-sm truncate">{s.shortTitle}</div>

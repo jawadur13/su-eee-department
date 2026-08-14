@@ -77,12 +77,17 @@ export default function SyllabusForm({ initial }: { initial: Syllabus | null }) 
         <input type="hidden" name="pdfFileName" value={pdf.fileName} />
       </Card>
 
-      <Card title="Status">
-        <label className="flex items-center gap-3 cursor-pointer">
+      <Card title="PDF availability">
+        <label className="flex items-start gap-3 cursor-pointer">
           <input type="checkbox" name="isEnabled" defaultChecked={initial?.isEnabled ?? true}
-                 className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-accent/50" />
-          <span className="text-sm font-medium text-gray-700">Enable this syllabus</span>
-          <span className="text-xs text-gray-500">(Disabled syllabi will not be visible on the website)</span>
+                 className="mt-0.5 w-5 h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-accent/50" />
+          <span>
+            <span className="block text-sm font-medium text-gray-700">Allow visitors to view &amp; download the PDF</span>
+            <span className="block text-xs text-gray-500 mt-0.5">
+              When unchecked, the syllabus card still appears on the public page, but both the
+              “View Syllabus” and “Download” buttons are replaced with a disabled “PDF not available” state.
+            </span>
+          </span>
         </label>
       </Card>
 

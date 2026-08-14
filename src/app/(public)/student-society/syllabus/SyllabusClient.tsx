@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
-import { Search, Download, ExternalLink } from 'lucide-react';
+import { Search, Download, ExternalLink, Lock } from 'lucide-react';
 import { withAttachmentDownload } from '@/lib/pdf-helpers';
 
 export type SyllabusCardRow = {
@@ -14,6 +14,8 @@ export type SyllabusCardRow = {
   coverUrl: string;
   pdfUrl: string | null;
   summary: string;
+  /** Admin toggle. false → card still renders, but the PDF actions are withheld. */
+  isEnabled: boolean;
 };
 
 const FILTERS = ['All', 'Undergraduate', 'Postgraduate'] as const;
@@ -127,7 +129,20 @@ export default function SyllabusClient({ items }: { items: readonly SyllabusCard
                 <p className="text-sm text-gray-600 mb-3">{s.department}</p>
                 <p className="text-sm text-gray-700 leading-relaxed mb-5">{s.summary}</p>
 
-                {s.pdfUrl ? (
+                {!s.isEnabled ? (
+                  <div className="mt-auto">
+                    <span
+                      aria-disabled="true"
+                      className="inline-flex items-center justify-center gap-2 w-full px-5 py-3 bg-gray-100 text-gray-400 text-sm font-semibold rounded-md cursor-not-allowed"
+                    >
+                      <Lock size={16} />
+                      PDF not available
+                    </span>
+                    <p className="mt-2 text-xs text-gray-500 text-center leading-relaxed">
+                      This syllabus is not available for download right now.
+                    </p>
+                  </div>
+                ) : s.pdfUrl ? (
                   <div className="mt-auto flex flex-col gap-2.5">
                     <a
                       href={s.pdfUrl}

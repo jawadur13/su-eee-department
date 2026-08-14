@@ -139,7 +139,7 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
       select: { routeName: true, busNumber: true, contact: true },
     }),
     prisma.syllabus.findMany({
-      select: { slug: true, title: true, shortTitle: true, summary: true, pdfUrl: true },
+      select: { slug: true, title: true, shortTitle: true, summary: true, pdfUrl: true, isEnabled: true },
     }),
     // Phase 8a — only the latest active notice; older / inactive ones
     // are not currently rendered anywhere public (Decision B1 — no
@@ -293,12 +293,14 @@ export const getSearchIndex = cache(async (): Promise<SearchItem[]> => {
     type: 'Transport',
   }));
 
-  // Syllabi (Phase 7 — DB). Link to the PDF when uploaded, else the
-  // list page where the "Download" button surfaces alongside others.
+  // Syllabi (Phase 7 — DB). Link to the PDF when uploaded AND the admin
+  // has left it enabled, else the list page where the "Download" button
+  // surfaces alongside others. Linking a disabled row's PDF here would
+  // hand out the URL that the public card deliberately withholds.
   const syllabusItems: SearchItem[] = syllabusRows.map((s) => ({
     title: s.title,
     description: s.summary,
-    href: s.pdfUrl ?? '/student-society/syllabus',
+    href: (s.isEnabled && s.pdfUrl) || '/student-society/syllabus',
     type: 'Syllabus',
   }));
 
