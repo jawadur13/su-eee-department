@@ -130,13 +130,15 @@ export default function ProspectusClient({ items }: { items: ProspectusItem[] })
 
               {/* PDF Preview */}
               {p.pdf ? (
-                <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                  <iframe
-                    src={`${p.pdf}#toolbar=0`}
-                    title={p.title}
-                    className="w-full"
-                    style={{ height: '600px' }}
-                  />
+                <div className="flex justify-center">
+                  <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden w-full max-w-2xl">
+                    <iframe
+                      src={`${p.pdf}#toolbar=0`}
+                      title={p.title}
+                      className="w-full"
+                      style={{ height: '600px' }}
+                    />
+                  </div>
                 </div>
               ) : (
                 <div className="bg-white rounded-xl border border-dashed border-gray-300 p-12 text-center">
