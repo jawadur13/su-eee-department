@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
         fullName: fullName.trim(),
         mobileNumber: mobileNumber.trim(),
         interestedProgram: interestedProgram.trim(),
-        ipAddress: request.headers.get('x-forwarded-for') || request.ip,
+        ipAddress: request.headers.get('x-forwarded-for') || null,
         userAgent: request.headers.get('user-agent') || undefined,
       },
     });
