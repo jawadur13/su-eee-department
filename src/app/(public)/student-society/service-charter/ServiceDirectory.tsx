@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Mail, MapPin, Phone, User } from 'lucide-react';
+import { ArrowRight, Mail, MapPin, User } from 'lucide-react';
 
 type Step = { text: string; linkLabel?: string | null; linkHref?: string | null };
 type ServiceItem = {
@@ -93,12 +93,6 @@ export default function ServiceDirectory({ items: raw }: { items: unknown }) {
                   <div className="flex items-center gap-2 text-xs font-semibold text-primary">
                     <User size={13} className="shrink-0 text-gray-400" />
                     {item.contactName}{item.contactRole && <span className="font-normal text-gray-500"> ({item.contactRole})</span>}
-                  </div>
-                )}
-                {item.contactPhone && (
-                  <div className="flex items-center gap-2 text-xs text-gray-600">
-                    <Phone size={13} className="shrink-0 text-gray-400" />
-                    {item.contactPhone}
                   </div>
                 )}
                 {item.contactEmail && (
