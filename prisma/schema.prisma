@@ -897,11 +897,13 @@ model Syllabus {
   pdfPublicId   String?
   pdfFileName   String?
   summary       String   @db.Text
+  isEnabled     Boolean  @default(true)
   displayOrder  Int
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
   @@index([displayOrder])
+  @@index([isEnabled, displayOrder])
   @@map("syllabus")
 }
 

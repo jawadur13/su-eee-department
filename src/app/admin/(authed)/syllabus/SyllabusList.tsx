@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { FileText, Pencil, Trash2 } from 'lucide-react';
+import { FileText, Pencil, Trash2, Eye, EyeOff } from 'lucide-react';
 import { toast } from 'sonner';
 import type { Syllabus } from '@prisma/client';
 import SortableList from '@/components/admin/SortableList';
@@ -58,11 +58,15 @@ export default function SyllabusList({ items: initialItems }: { items: Syllabus[
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={s.coverUrl} alt="" className="w-12 h-14 rounded bg-gray-50 border border-gray-200 object-cover shrink-0" />
             <div className="min-w-0">
-              <div className="flex items-center gap-2 mb-0.5">
+              <div className="flex items-center gap-2 mb-0.5 flex-wrap">
                 <span className={`inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${s.level === 'Undergraduate' ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'}`}>
                   {s.level}
                 </span>
                 {s.pdfUrl && <FileText size={14} className="text-accent" />}
+                <span className={`inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${s.isEnabled ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'}`}>
+                  {s.isEnabled ? <Eye size={12} /> : <EyeOff size={12} />}
+                  {s.isEnabled ? 'Published' : 'Draft'}
+                </span>
               </div>
               <div className="font-medium text-gray-900 text-sm truncate">{s.shortTitle}</div>
               <div className="text-xs text-gray-500 truncate font-mono">/{s.slug}</div>

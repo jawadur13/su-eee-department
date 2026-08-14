@@ -383,7 +383,10 @@ export const getBusRoutes = cache(async () => {
 });
 
 export const getSyllabi = cache(async () => {
-  return prisma.syllabus.findMany({ orderBy: { displayOrder: 'asc' } });
+  return prisma.syllabus.findMany({
+    where: { isEnabled: true },
+    orderBy: { displayOrder: 'asc' },
+  });
 });
 
 export const getServiceCharters = cache(async () => {

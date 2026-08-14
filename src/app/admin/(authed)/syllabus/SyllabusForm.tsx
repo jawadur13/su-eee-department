@@ -77,6 +77,15 @@ export default function SyllabusForm({ initial }: { initial: Syllabus | null }) 
         <input type="hidden" name="pdfFileName" value={pdf.fileName} />
       </Card>
 
+      <Card title="Status">
+        <label className="flex items-center gap-3 cursor-pointer">
+          <input type="checkbox" name="isEnabled" defaultChecked={initial?.isEnabled ?? true}
+                 className="w-5 h-5 rounded border-gray-300 text-primary focus:ring-2 focus:ring-accent/50" />
+          <span className="text-sm font-medium text-gray-700">Enable this syllabus</span>
+          <span className="text-xs text-gray-500">(Disabled syllabi will not be visible on the website)</span>
+        </label>
+      </Card>
+
       {state.ok === false && (
         <div role="alert" className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
           {state.error}

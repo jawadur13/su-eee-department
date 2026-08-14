@@ -755,6 +755,7 @@ export const syllabusCreateSchema = z.object({
   pdfPublicId:   optionalNullableString,
   pdfFileName:   optionalNullableString,
   summary:       z.string().min(1),
+  isEnabled:     z.boolean().default(true),
 });
 
 export const syllabusUpdateSchema = syllabusCreateSchema;

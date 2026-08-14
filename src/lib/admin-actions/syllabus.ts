@@ -43,6 +43,7 @@ function readSyllabusRow(formData: FormData) {
     pdfPublicId:   emptyToNull(formData.get('pdfPublicId')),
     pdfFileName:   emptyToNull(formData.get('pdfFileName')),
     summary:       getStr(formData, 'summary'),
+    isEnabled:     formData.get('isEnabled') === 'on',
   };
 }
 
