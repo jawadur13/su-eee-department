@@ -48,6 +48,7 @@ import {
   Rocket,
   ShieldCheck,
   Wrench,
+  MessageCircle,
 } from 'lucide-react';
 import { useConfirm } from './ConfirmDialogProvider';
 
@@ -113,6 +114,11 @@ const STUDENT_SOCIETY_NAV: NavItem[] = [
   { href: '/admin/service-charter',   label: 'Service Charter',   icon: FileText },
 ];
 
+const LEADS_NAV: NavItem[] = [
+  { href: '/admin/lead-popup',  label: 'Popup Settings', icon: MessageCircle },
+  { href: '/admin/leads',       label: 'Collected Leads', icon: UserCircle2 },
+];
+
 const CAMPUS_SERVICES_NAV: NavItem[] = [
   { href: '/admin/bus-routes',        label: 'Bus Routes',        icon: Bus },
   { href: '/admin/transport-landing', label: 'Transport Landing', icon: MapIcon },
@@ -156,6 +162,8 @@ export default function Sidebar({
   const [contentHubsOpen, setContentHubsOpen] = useState<boolean>(contentHubsActive);
   const studentSocietyActive = STUDENT_SOCIETY_NAV.some((n) => pathname?.startsWith(n.href));
   const [studentSocietyOpen, setStudentSocietyOpen] = useState<boolean>(studentSocietyActive);
+  const leadsActive = LEADS_NAV.some((n) => pathname?.startsWith(n.href));
+  const [leadsOpen, setLeadsOpen] = useState<boolean>(leadsActive);
   const campusServicesActive = CAMPUS_SERVICES_NAV.some((n) => pathname?.startsWith(n.href));
   const [campusServicesOpen, setCampusServicesOpen] = useState<boolean>(campusServicesActive);
   const admissionActive = ADMISSION_NAV.some((n) => pathname?.startsWith(n.href));
@@ -402,6 +410,32 @@ export default function Sidebar({
         {studentSocietyOpen && (
           <div className="pl-6 space-y-1">
             {STUDENT_SOCIETY_NAV.map(({ href, label }) => (
+              <Link key={href} href={href} className={linkClass(!!isActive(href))}>
+                <span className="text-[10px] leading-none">●</span>
+                {label}
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {/* Lead Collection — collapsible group */}
+        <button
+          type="button"
+          onClick={() => setLeadsOpen((v) => !v)}
+          aria-expanded={leadsOpen}
+          className={`w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+            leadsActive ? 'text-accent' : 'text-gray-700 hover:bg-gray-50'
+          }`}
+        >
+          <span className="flex items-center gap-3">
+            <MessageCircle size={16} />
+            Lead Collection
+          </span>
+          <ChevronDown size={14} className={`transition-transform ${leadsOpen ? 'rotate-180' : ''}`} />
+        </button>
+        {leadsOpen && (
+          <div className="pl-6 space-y-1">
+            {LEADS_NAV.map(({ href, label }) => (
               <Link key={href} href={href} className={linkClass(!!isActive(href))}>
                 <span className="text-[10px] leading-none">●</span>
                 {label}

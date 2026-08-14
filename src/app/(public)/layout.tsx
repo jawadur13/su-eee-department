@@ -4,6 +4,7 @@ import JourneyCTASection from '@/components/sections/JourneyCTASection';
 import InitialSplash from '@/components/common/InitialSplash';
 import PublicNavigationOverlay from '@/components/common/PublicNavigationOverlay';
 import PageFadeWrapper from '@/components/layout/PageFadeWrapper';
+import LeadPopup from '@/components/LeadPopup';
 import {
   getDepartmentIdentity,
   getUniversityIdentity,
@@ -146,6 +147,9 @@ export default async function PublicLayout({
         legalLinks={legalLinks}
         campusLinks={campusLinks}
       />
+
+      {/* Lead collection popup — appears after configurable delay */}
+      <LeadPopup />
     </>
   );
 }
