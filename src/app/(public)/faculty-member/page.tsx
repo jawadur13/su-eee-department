@@ -111,13 +111,15 @@ export default async function FacultyMemberPage() {
         />
 
         {/* Part-time faculty */}
-        <div className="mt-16 md:mt-20">
-          <FacultySection
-            overline="Visiting & Contractual Faculty"
-            title="Part-Time Teachers"
-            members={partTime}
-          />
-        </div>
+        {partTime.length > 0 && (
+          <div className="mt-16 md:mt-20">
+            <FacultySection
+              overline="Visiting & Contractual Faculty"
+              title="Part-Time Teachers"
+              members={partTime}
+            />
+          </div>
+        )}
       </Container>
     </PageShell>
   );
