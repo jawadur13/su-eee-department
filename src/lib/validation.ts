@@ -293,6 +293,9 @@ export const uploadKindSchema = z.enum([
   'legal-hero',
   'department-layout-cover',
   'department-layout-pdf',
+  // Phase 21
+  'service-charter-cover',
+  'service-charter-pdf',
 ]);
 
 export const uploadSignSchema = z.object({

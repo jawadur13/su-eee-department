@@ -70,6 +70,11 @@ const KIND_TO_SUBFOLDER: Record<string, string> = {
   // Phase 17 — Privacy Policy + Terms & Conditions hero images (shared
   // Cloudinary folder; the same kind is used by both admin form fields).
   'legal-hero':            'legal/hero',
+  // Service Charter — cover image for charter document cards + the
+  // downloadable PDF ('service-charter-pdf' reuses /auto/upload like
+  // 'syllabus-pdf', PDF auto-detected from upJson.format).
+  'service-charter-cover': 'service-charter/covers',
+  'service-charter-pdf':   'service-charter/pdfs',
 };
 
 function folderFor(kind: string): string {

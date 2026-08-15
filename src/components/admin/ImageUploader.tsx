@@ -43,7 +43,10 @@ type Kind =
   // Phase 17
   | 'legal-hero'
   | 'department-layout-cover'
-  | 'department-layout-pdf';
+  | 'department-layout-pdf'
+  // Phase 21 — Service Charter cover + PDF
+  | 'service-charter-cover'
+  | 'service-charter-pdf';
 
 // Per-kind ideal upload size hint, surfaced under every image field
 // so admins have a target before opening the file picker. null = no
@@ -77,6 +80,8 @@ const RECOMMENDED_SIZE_BY_KIND: Record<Kind, string | null> = {
   'legal-hero':            'Landscape banner · 1920×500',
   'department-layout-cover': 'Portrait / landscape · 1200×1600 recommended',
   'department-layout-pdf':   null,
+  'service-charter-cover':   'Portrait · 800×1131 (A4 ratio)',
+  'service-charter-pdf':     null,
 };
 
 export type UploadMeta = {

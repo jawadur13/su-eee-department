@@ -1,7 +1,21 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import { prisma } from '@/lib/db';
+import { getSession } from '@/lib/auth-server';
 import { serviceCharterCreateSchema, serviceCharterUpdateSchema } from '@/lib/validation';
+
+async function requireAuth() {
+  const session = await getSession();
+  if (!session?.user) throw new Error('Not authenticated');
+}
+
+function revalidateServiceCharterSurfaces() {
+  revalidatePath('/student-society/service-charter');
+  revalidatePath('/admin/service-charter');
+  revalidatePath('/admin');
+  revalidatePath('/', 'layout');
+}
 
 export async function getServiceCharters() {
   return prisma.serviceCharter.findMany({
@@ -16,6 +30,7 @@ export async function getServiceCharterBySlug(slug: string) {
 }
 
 export async function createServiceCharter(input: unknown) {
+  await requireAuth();
   const parsed = serviceCharterCreateSchema.parse(input);
 
   const maxOrder = await prisma.serviceCharter.findFirst({
@@ -23,30 +38,40 @@ export async function createServiceCharter(input: unknown) {
     select: { displayOrder: true },
   });
 
-  return prisma.serviceCharter.create({
+  const created = await prisma.serviceCharter.create({
     data: {
       ...parsed,
       displayOrder: parsed.displayOrder ?? (maxOrder?.displayOrder ?? 0) + 1,
     },
   });
+  revalidateServiceCharterSurfaces();
+  return created;
 }
 
 export async function updateServiceCharter(id: string, input: unknown) {
+  await requireAuth();
   const parsed = serviceCharterUpdateSchema.parse(input);
 
-  return prisma.serviceCharter.update({
+  const updated = await prisma.serviceCharter.update({
     where: { id },
     data: parsed,
   });
+  revalidateServiceCharterSurfaces();
+  revalidatePath(`/admin/service-charter/${id}`);
+  return updated;
 }
 
 export async function deleteServiceCharter(id: string) {
-  return prisma.serviceCharter.delete({
+  await requireAuth();
+  const deleted = await prisma.serviceCharter.delete({
     where: { id },
   });
+  revalidateServiceCharterSurfaces();
+  return deleted;
 }
 
 export async function reorderServiceCharters(ids: string[]) {
+  await requireAuth();
   const updates = ids.map((id, idx) =>
     prisma.serviceCharter.update({
       where: { id },
@@ -54,5 +79,7 @@ export async function reorderServiceCharters(ids: string[]) {
     })
   );
 
-  return Promise.all(updates);
+  const result = await Promise.all(updates);
+  revalidateServiceCharterSurfaces();
+  return result;
 }
