@@ -157,9 +157,6 @@ export default function ProspectusClient({ items }: { items: ProspectusItem[] })
                     <h3 className="font-display text-lg font-bold text-primary leading-snug">
                       {p.shortTitle}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-1">
-                      Download the complete prospectus PDF
-                    </p>
                   </div>
 
                   <a
