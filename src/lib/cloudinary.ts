@@ -75,6 +75,9 @@ const KIND_TO_SUBFOLDER: Record<string, string> = {
   // 'syllabus-pdf', PDF auto-detected from upJson.format).
   'service-charter-cover': 'service-charter/covers',
   'service-charter-pdf':   'service-charter/pdfs',
+  // Research paper PDFs, self-hosted rather than hotlinked to the
+  // university site (reuses /auto/upload like 'syllabus-pdf').
+  'research-paper-pdf':    'research-papers/pdfs',
 };
 
 function folderFor(kind: string): string {

@@ -79,22 +79,42 @@ export default async function ResearchPage() {
                     <span className="text-gray-500">{paper.area}</span>
                   </div>
 
-                  {Array.isArray(paper.links) && paper.links.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-gray-100">
-                      {paper.links.filter((l: any) => l?.label && l?.value).map((link: any, i: number) => (
-                        <a
-                          key={i}
-                          href={link.value}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-accent bg-accent/5 hover:bg-accent/10 px-2.5 py-1 rounded-full transition-colors"
-                        >
-                          <ExternalLink size={11} />
-                          {link.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
+                  {(() => {
+                    // The self-hosted PDF leads the action row, then any
+                    // external references (DOI, IEEE Xplore, ...).
+                    const links = Array.isArray(paper.links)
+                      ? (paper.links as { label?: string; value?: string }[]).filter((l) => l?.label && l?.value)
+                      : [];
+                    if (!paper.pdfUrl && links.length === 0) return null;
+
+                    return (
+                      <div className="flex flex-wrap gap-2 mt-3 pt-3 border-t border-gray-100">
+                        {paper.pdfUrl && (
+                          <a
+                            href={paper.pdfUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-accent bg-accent/5 hover:bg-accent/10 px-2.5 py-1 rounded-full transition-colors"
+                          >
+                            <FileText size={11} />
+                            View PDF
+                          </a>
+                        )}
+                        {links.map((link, i) => (
+                          <a
+                            key={i}
+                            href={link.value}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-accent bg-accent/5 hover:bg-accent/10 px-2.5 py-1 rounded-full transition-colors"
+                          >
+                            <ExternalLink size={11} />
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    );
+                  })()}
                 </div>
               </article>
             ))}

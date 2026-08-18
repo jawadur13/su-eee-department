@@ -46,7 +46,9 @@ type Kind =
   | 'department-layout-pdf'
   // Phase 21 — Service Charter cover + PDF
   | 'service-charter-cover'
-  | 'service-charter-pdf';
+  | 'service-charter-pdf'
+  // Research paper PDF (self-hosted).
+  | 'research-paper-pdf';
 
 // Per-kind ideal upload size hint, surfaced under every image field
 // so admins have a target before opening the file picker. null = no
@@ -82,6 +84,7 @@ const RECOMMENDED_SIZE_BY_KIND: Record<Kind, string | null> = {
   'department-layout-pdf':   null,
   'service-charter-cover':   'Portrait · 800×1131 (A4 ratio)',
   'service-charter-pdf':     null,
+  'research-paper-pdf':      null,
 };
 
 export type UploadMeta = {

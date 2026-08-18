@@ -47,6 +47,8 @@ function readResearchPaperRow(formData: FormData) {
     date:            emptyToNull(formData.get('date')),
     publicationYear: getIntOrNull(formData, 'publicationYear'),
     links,
+    pdfUrl:          emptyToNull(formData.get('pdfUrl')),
+    pdfPublicId:     emptyToNull(formData.get('pdfPublicId')),
   };
 }
 

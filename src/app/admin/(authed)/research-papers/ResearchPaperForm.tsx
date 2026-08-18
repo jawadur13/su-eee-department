@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useActionState, useEffect } from 'react';
 import { toast } from 'sonner';
 import type { ResearchPaper } from '@prisma/client';
+import ImageUploader from '@/components/admin/ImageUploader';
 import KeyValueListEditor from '@/components/admin/KeyValueListEditor';
 import {
   createResearchPaperAction,
@@ -50,6 +51,23 @@ export default function ResearchPaperForm({ initial }: { initial: ResearchPaper 
           valuePlaceholder="https://doi.org/10.1109/..."
           addButtonLabel="Add link"
           emptyHint="No links yet."
+        />
+      </Card>
+
+      <Card title="PDF (full paper)">
+        <p className="text-xs text-gray-500 -mt-2">
+          Upload the paper itself so it is served from our own Cloudinary
+          account rather than hotlinked to another site. When set, the public
+          research page shows a &quot;View PDF&quot; button under the title.
+          Leave empty for a metadata-only listing.
+        </p>
+        <ImageUploader
+          kind="research-paper-pdf"
+          name="pdf"
+          accept="application/pdf"
+          initialUrl={initial?.pdfUrl}
+          initialPublicId={initial?.pdfPublicId}
+          initialFileType="pdf"
         />
       </Card>
 

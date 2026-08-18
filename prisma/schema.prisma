@@ -853,6 +853,12 @@ model ResearchPaper {
   date            String?
   publicationYear Int?
   links           Json     @default("[]")
+  // Self-hosted PDF of the paper. Nullable so a paper can be listed
+  // metadata-only. Uploaded through Cloudinary /auto/upload with
+  // accept='application/pdf' (same path as 'syllabus-pdf'); the
+  // public page renders a "View PDF" button from pdfUrl.
+  pdfUrl          String?
+  pdfPublicId     String?
   displayOrder    Int
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt

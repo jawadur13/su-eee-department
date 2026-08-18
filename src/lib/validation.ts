@@ -296,6 +296,7 @@ export const uploadKindSchema = z.enum([
   // Phase 21
   'service-charter-cover',
   'service-charter-pdf',
+  'research-paper-pdf',
 ]);
 
 export const uploadSignSchema = z.object({
@@ -723,6 +724,8 @@ export const researchPaperCreateSchema = z.object({
   date:            optionalNullableString,
   publicationYear: z.number().int().min(1900).max(2100).nullable().optional(),
   links:           z.array(z.object({ label: z.string(), value: z.string() })).default([]),
+  pdfUrl:          optionalNullableString,
+  pdfPublicId:     optionalNullableString,
 });
 
 export const researchPaperUpdateSchema = researchPaperCreateSchema;
